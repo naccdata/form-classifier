@@ -9,8 +9,8 @@ from flywheel_gear_toolkit import GearToolkitContext
 # allows the gear to be publishable and the main interfaces
 # to it can then be imported in another project which enables
 # chaining multiple gears together.
-from fw_gear_skeleton.main import run
-from fw_gear_skeleton.parser import parse_config
+from fw_gear_file_classifier.main import run
+from fw_gear_file_classifier.parser import parse_config
 
 # The run.py should be as minimal as possible.
 # The gear is split up into 2 main components. The run.py file which is executed
@@ -24,11 +24,11 @@ log = logging.getLogger(__name__)
 def main(context: GearToolkitContext) -> None:  # pragma: no cover
     """Parses config and run"""
 
-    # Call the fw_gear_skeleton.parser.parse_config function
+    # Call the fw_gear_file_classifier.parser.parse_config function
     # to extract the args, kwargs from the context (e.g. config.json).
     debug, text = parse_config(context)
 
-    # Pass the args, kwargs to fw_gear_skeleton.main.run function to execute
+    # Pass the args, kwargs to fw_gear_file_classifier.main.run function to execute
     # the main functionality of the gear.
     e_code = run(text)
 

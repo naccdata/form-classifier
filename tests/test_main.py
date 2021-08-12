@@ -1,7 +1,7 @@
 """Module to test main.py"""
 import pytest
 
-# from fw_gear_skeleton.main import run
+# from fw_gear_file_classifier.main import run
 
 
 def test_run():

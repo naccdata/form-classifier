@@ -1,22 +1,23 @@
 [tool.poetry]
-name = "fw-gear-skeleton"
+name = "fw-gear-file-classifier"
 version = "0.1.0"
-description = "{{Skeleton version of cowsay for new gears.}}"
+description = "Generalized File Classifier"
 authors = ["Flywheel <support@flywheel.io>"]
 readme = "README.md"
 license = "MIT"
 keywords = [
     "Flywheel",
-    "Gears"
+    "Gears",
+    "Classification"
 ]
-repository = "https://gitlab.com/flywheel-io/flywheel-apps/templates/skeleton"
+repository = "https://gitlab.com/flywheel-io/flywheel-apps/classifier"
 classifiers = [
     "Topic :: Scientific/Engineering"
 ]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-flywheel-gear-toolkit = "^0.2"
+flywheel-gear-toolkit = "^0.3"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.2"

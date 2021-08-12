@@ -11,26 +11,26 @@
   },
   "custom": {
     "flywheel": {
-      "suite": "{{Curation}}"
+      "suite": "classification"
     },
     "gear-builder": {
-      "category": "converter",
-      "image": "flywheel/skeleton:0.0.1"
+      "category": "classifier",
+      "image": "flywheel/file-classifier:0.1.0"
     }
   },
-  "description": "{{ }}",
+  "description": "Generalized file classifier.",
   "environment": {},
   "inputs": {
-    "{{text-input}}": {
+    "file-input": {
       "base": "file",
-      "description": "{{A text file.}}"
+      "description": "File to classify"
     }
   },
-  "label": "Skeleton",
+  "label": "File Classifier",
   "license": "MIT",
   "maintainer": "Flywheel <support@flywheel.io>",
-  "name": "skeleton",
-  "source": "https://gitlab.com/flywheel-io/flywheel-apps/templates/{{skeleton}}",
-  "url": "https://gitlab.com/flywheel-io/flywheel-apps/templates/{{skeleton}}",
-  "version": "0.0.1"
+  "name": "file-classifier",
+  "source": "https://gitlab.com/flywheel-io/flywheel-apps/classifier.git",
+  "url": "https://gitlab.com/flywheel-io/flywheel-apps/classifier.git",
+  "version": "0.1.0"
 }
