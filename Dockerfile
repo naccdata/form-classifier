@@ -14,7 +14,7 @@ RUN poetry install --no-dev
 # Installing the current project (most likely to change, above layer can be cached)
 # Note: poetry requires a README.md to install the current project
 COPY run.py manifest.json README.md $FLYWHEEL/
-COPY fw_gear_skeleton $FLYWHEEL/fw_gear_skeleton
+COPY fw_gear_file_classifier $FLYWHEEL/fw_gear_file_classifier
 RUN poetry install --no-dev
 
 # Configure entrypoint
