@@ -1,21 +1,15 @@
 """Parser module to parse gear config.json."""
-from typing import Tuple
+from typing import Any, Dict, Tuple
 
 from flywheel_gear_toolkit import GearToolkitContext
 
 
-# This function mainly parses gear_context's config.json file and returns relevant inputs and options.
 def parse_config(
     gear_context: GearToolkitContext,
-) -> Tuple[str, str]:
-    """[Summary]
+) -> Tuple[bool, Dict[str, Any]]:
+    """Parse file-input from gear context."""
 
-    Returns:
-        [type]: [description]
-    """
+    debug: bool = gear_context.config.get("debug")  # type: ignore
+    file_input: Dict[str, Any] = gear_context.get_input("file-input")  # type: ignore
 
-    debug = gear_context.config.get("debug")
-    with open(gear_context.get_input_path("{{text-input}}"), "r") as text_file:
-        text = " ".join(text_file.readlines())
-
-    return debug, text
+    return debug, file_input
