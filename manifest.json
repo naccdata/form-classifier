@@ -15,7 +15,7 @@
     },
     "gear-builder": {
       "category": "classifier",
-      "image": "flywheel/fw_gear_file_classifier:0.1.0"
+      "image": "flywheel/fw-gear-file-classifier:0.1.0"
     }
   },
   "description": "Generic file classifier",
@@ -23,7 +23,7 @@
   "inputs": {
     "file-input": {
       "base": "file",
-      "description": "File to be classified."
+      "description": "File to classify"
     }
   },
   "label": "File Classifier",

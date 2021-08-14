@@ -7,7 +7,8 @@ readme = "README.md"
 license = "MIT"
 keywords = [
     "Flywheel",
-    "Gears"
+    "Gears",
+    "Classification"
 ]
 repository = "https://gitlab.com/flywheel-io/flywheel-apps/classifier.git"
 classifiers = [
