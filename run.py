@@ -20,8 +20,8 @@ def main(context: GearToolkitContext) -> None:  # pragma: no cover
     output_dir: Path
     file_input, output_dir = parse_config(context)
     # Run main entry
-    e_code = run(file_input, output_dir, context)
-    sys.exit(e_code)
+    _ = run(file_input, output_dir, context)
+#    sys.exit(e_code)
 
 
 if __name__ == "__main__":  # pragma: no cover
