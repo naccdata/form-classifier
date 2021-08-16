@@ -16,12 +16,14 @@ log = logging.getLogger(__name__)
 def main(context: GearToolkitContext) -> None:  # pragma: no cover
     """Parse config and run."""
     # Parse config
-    debug: bool
+    api_key: t.Optional[str]
     file_input: t.Dict[str, t.Any]
     output_dir: Path
-    debug, file_input, output_dir = parse_config(context)
+    api_key, file_input, output_dir = parse_config(context)
+    if api_key is None:
+        log.warning('Could not find API key.')
     # Run main entry
-    e_code = run(file_input, output_dir)
+    e_code = run(api_key, file_input, output_dir)
     sys.exit(e_code)
 
 

@@ -1,5 +1,5 @@
 """Parser module to parse gear config.json."""
-from typing import Any, Dict, Tuple
+from typing import Any, Dict, Optional, Tuple
 from pathlib import Path
 
 from flywheel_gear_toolkit import GearToolkitContext
@@ -7,9 +7,12 @@ from flywheel_gear_toolkit import GearToolkitContext
 
 def parse_config(
     gear_context: GearToolkitContext,
-) -> Tuple[bool, Dict[str, Any], Path]:
+) -> Tuple[Optional[str], Dict[str, Any], Path]:
     """Parse file-input from gear context."""
-    debug: bool = gear_context.config.get("debug")  # type: ignore
+    try:
+        api_key = gear_context.config_json['inputs']['api-key']['key']
+    except KeyError:
+        api_key = None
     file_input: Dict[str, Any] = gear_context.get_input("file-input")  # type: ignore
 
-    return debug, file_input, gear_context.output_dir
+    return api_key, file_input, gear_context.output_dir
