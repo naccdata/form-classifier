@@ -1,0 +1,4 @@
+[submodule "classification-toolkit"]
+	path = classification-toolkit
+	url = git@gitlab.com:/flywheel-io/public/classification-toolkit.git
+    branch = GEAR-1220-dev-phase-2

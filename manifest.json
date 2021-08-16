@@ -15,7 +15,7 @@
     },
     "gear-builder": {
       "category": "classifier",
-      "image": "flywheel/fw-gear-file-classifier:0.1.0"
+      "image": "flywheel/fw-gear-file-classifier:0.1.0-dev.1"
     }
   },
   "description": "Generic file classifier",
@@ -32,5 +32,5 @@
   "name": "fw-gear-file-classifier",
   "source": "https://gitlab.com/flywheel-io/flywheel-apps/classifier.git",
   "url": "https://gitlab.com/flywheel-io/flywheel-apps/classifier.git",
-  "version": "0.1.0"
+  "version": "0.1.0-dev.1"
 }
