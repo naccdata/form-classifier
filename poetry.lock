@@ -256,6 +256,21 @@ type = "directory"
 url = "classification-toolkit"
 
 [[package]]
+name = "fw-core-client"
+version = "1.0.0"
+description = "Flywheel Core HTTP API client"
+category = "main"
+optional = false
+python-versions = ">=3.8,<4.0"
+
+[package.dependencies]
+fw-http-client = ">=1.0.4,<2.0.0"
+fw-utils = ">=1.0.0,<2.0.0"
+memoization = ">=0,<1"
+packaging = ">=20.8,<21.0"
+pydantic = ">=1.6.1,<2.0.0"
+
+[[package]]
 name = "fw-file"
 version = "1.0.0"
 description = "Unified data-file interface"
@@ -279,6 +294,20 @@ all = ["nibabel (>=3.2.1,<4.0.0)", "piexif (>=1.1.3,<2.0.0)", "pillow (>=8.2.0,<
 nifti = ["nibabel (>=3.2.1,<4.0.0)"]
 jpg = ["piexif (>=1.1.3,<2.0.0)", "pillow (>=8.2.0,<9.0.0)"]
 png = ["pypng (>=0,<1)"]
+
+[[package]]
+name = "fw-http-client"
+version = "1.0.10"
+description = "Prod-ready HTTP client with timeout and retries"
+category = "main"
+optional = false
+python-versions = ">=3.8,<4.0"
+
+[package.dependencies]
+fw-utils = ">=1.0.0,<2.0.0"
+pydantic = ">=1.6.1,<2.0.0"
+requests = ">=2.24.0,<3.0.0"
+types-requests = ">=2.25,<3.0"
 
 [[package]]
 name = "fw-meta"
@@ -532,11 +561,11 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "packaging"
-version = "21.0"
+version = "20.9"
 description = "Core utilities for Python packages"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [package.dependencies]
 pyparsing = ">=2.0.2"
@@ -960,6 +989,14 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "types-requests"
+version = "2.25.6"
+description = "Typing stubs for requests"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "typing-extensions"
 version = "3.10.0.0"
 description = "Backported and Experimental Type Hints for Python 3.5+"
@@ -1002,7 +1039,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "8dbd429b1f863bb6f21337b0a4669396f4f1dec1179cf918919d8754a7b8a904"
+content-hash = "fe3a29228f4b6d03478303daae1fd9376065b7bb05f8e723e0928ec9bbbefce3"
 
 [metadata.files]
 appdirs = [
@@ -1124,8 +1161,14 @@ future = [
     {file = "future-0.18.2.tar.gz", hash = "sha256:b1bead90b70cf6ec3f0710ae53a525360fa360d306a86583adc6bf83a4db537d"},
 ]
 fw-classification = []
+fw-core-client = [
+    {file = "fw_core_client-1.0.0-py3-none-any.whl", hash = "sha256:1ac82d485ba6f2fea619e89a2a67ae41200098aecf9f9bb5d7d50fff3bad8652"},
+]
 fw-file = [
     {file = "fw_file-1.0.0-py3-none-any.whl", hash = "sha256:c822178fa1e0c3ab17171a38afd391d9636bcef6dbf4b6998eaccdd033b87eff"},
+]
+fw-http-client = [
+    {file = "fw_http_client-1.0.10-py3-none-any.whl", hash = "sha256:09d0870edb4e06fdc04fb5efc7b616deb517b6df2ccb2eb77633b22ecf4f32da"},
 ]
 fw-meta = [
     {file = "fw_meta-1.0.0-py3-none-any.whl", hash = "sha256:9528f8e7e543bd34f9a916eef152ea10d8074d58d42f3b085839a9b1fa6cdaaa"},
@@ -1329,8 +1372,8 @@ orjson = [
     {file = "orjson-3.6.1.tar.gz", hash = "sha256:5ee598ce6e943afeb84d5706dc604bf90f74e67dc972af12d08af22249bd62d6"},
 ]
 packaging = [
-    {file = "packaging-21.0-py3-none-any.whl", hash = "sha256:c86254f9220d55e31cc94d69bade760f0847da8000def4dfe1c6b872fd14ff14"},
-    {file = "packaging-21.0.tar.gz", hash = "sha256:7dc96269f53a4ccec5c0670940a4281106dd0bb343f47b7471f779df49c2fbe7"},
+    {file = "packaging-20.9-py2.py3-none-any.whl", hash = "sha256:67714da7f7bc052e064859c05c595155bd1ee9f69f76557e21f051443c20947a"},
+    {file = "packaging-20.9.tar.gz", hash = "sha256:5b327ac1320dc863dca72f4514ecc086f31186744b84a230374cc1fd776feae5"},
 ]
 pathspec = [
     {file = "pathspec-0.9.0-py2.py3-none-any.whl", hash = "sha256:7d15c4ddb0b5c802d161efc417ec1a2558ea2653c2e8ad9c19098201dc1c993a"},
@@ -1699,6 +1742,10 @@ types-python-dateutil = [
 types-pyyaml = [
     {file = "types-PyYAML-5.4.6.tar.gz", hash = "sha256:745dcb4b1522423026bcc83abb9925fba747f1e8602d902f71a4058f9e7fb662"},
     {file = "types_PyYAML-5.4.6-py3-none-any.whl", hash = "sha256:96f8d3d96aa1a18a465e8f6a220e02cff2f52632314845a364ecbacb0aea6e30"},
+]
+types-requests = [
+    {file = "types-requests-2.25.6.tar.gz", hash = "sha256:e21541c0f55c066c491a639309159556dd8c5833e49fcde929c4c47bdb0002ee"},
+    {file = "types_requests-2.25.6-py3-none-any.whl", hash = "sha256:a5a305b43ea57bf64d6731f89816946a405b591eff6de28d4c0fd58422cee779"},
 ]
 typing-extensions = [
     {file = "typing_extensions-3.10.0.0-py2-none-any.whl", hash = "sha256:0ac0f89795dd19de6b97debb0c6af1c70987fd80a2d62d1958f7e56fcc31b497"},
