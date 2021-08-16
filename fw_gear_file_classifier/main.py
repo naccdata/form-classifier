@@ -4,6 +4,8 @@ import logging
 from pathlib import Path
 import json
 
+from flywheel_gear_toolkit import GearToolkitContext
+
 from fw_classification.adapters import FWAdapter
 from fw_classification.profiles import get_profile
 
@@ -11,15 +13,13 @@ log = logging.getLogger(__name__)
 
 
 def run(
-    api_key: Optional[str],
     file_input: Dict[str, Any],
-    out_dir: Path
+    out_dir: Path,
+    context: GearToolkitContext
 ) -> int:
     """Run classification."""
-    fw_adapter = FWAdapter(file_input, api=(api_key or ""))
-    metadata = fw_adapter.classify(get_profile('main.yml'))
-    log.info('Writing metadata:\n {json.dumps(metadata, indent=2)}')
-    with open(out_dir / '.metadata.json', 'w') as fp:
-        json.dump(metadata, fp, indent=2)
+    # Needs context for update_*_metadata methods
+    fw_adapter = FWAdapter(file_input, context)
+    fw_adapter.classify(get_profile('main.yml'))
 
     return 0
