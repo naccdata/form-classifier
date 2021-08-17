@@ -1,7 +1,5 @@
 """The fw_gear_file_classifier package."""
-from importlib.metadata import version
+import importlib.metadata
 
-try:
-    __version__ = version(__package__)
-except:  # pragma: no cover
-    pass
+PKG_NAME = __name__
+__version__ = importlib.metadata.version(PKG_NAME)

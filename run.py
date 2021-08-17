@@ -21,10 +21,15 @@ def main(context: GearToolkitContext) -> None:  # pragma: no cover
     file_input, output_dir = parse_config(context)
     # Run main entry
     _ = run(file_input, output_dir, context)
+    tags = context.get_input("file-input")["object"]["tags"][:]  # copy
+    tag = context.config.get("tag")
+    if tag:
+        tags.append(tag)
+
 #    sys.exit(e_code)
 
 
 if __name__ == "__main__":  # pragma: no cover
-    with GearToolkitContext() as gear_context:
+    with GearToolkitContext(fail_on_validation=False) as gear_context:
         gear_context.init_logging()
         main(gear_context)
