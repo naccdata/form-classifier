@@ -5,8 +5,9 @@ import sys
 import typing as t
 
 from flywheel_gear_toolkit import GearToolkitContext
-from fw_gear_file_classifier.main import run
+from fw_gear_file_classifier.main import classify
 from fw_gear_file_classifier.parser import parse_config
+from fw_classification import Profile
 from pathlib import Path
 
 
@@ -18,15 +19,19 @@ def main(context: GearToolkitContext) -> None:  # pragma: no cover
     # Parse config
     file_input: t.Dict[str, t.Any]
     output_dir: Path
-    file_input, output_dir = parse_config(context)
+    profile: Profile
+    file_input, profile = parse_config(context)
     # Run main entry
-    _ = run(file_input, output_dir, context)
+    e_code = classify(file_input, context, profile)
     tags = context.get_input("file-input")["object"]["tags"][:]  # copy
     tag = context.config.get("tag")
     if tag:
         tags.append(tag)
-
-#    sys.exit(e_code)
+    context.update_file_metadata(
+        context.get_input("file-input")['location']['name'],
+        tags=tags
+    )
+    sys.exit(e_code)
 
 
 if __name__ == "__main__":  # pragma: no cover

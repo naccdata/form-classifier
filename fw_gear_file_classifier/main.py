@@ -7,23 +7,32 @@ import json
 from flywheel_gear_toolkit import GearToolkitContext
 from flywheel_gear_toolkit.utils.qc import add_qc_info
 
-from fw_classification.adapters import FWAdapter
-from fw_classification.profiles import get_profile
+from fw_classification.adapters import FWAdapter, NiftiFWAdapter
+from fw_classification import Profile
 
 from . import PKG_NAME, __version__
 
 log = logging.getLogger(__name__)
 
 
-def run(
+def classify(
     file_input: Dict[str, Any],
-    out_dir: Path,
-    context: GearToolkitContext
+    context: GearToolkitContext,
+    profile: Profile
 ) -> int:
     """Run classification."""
     # Needs context for update_*_metadata methods
-    fw_adapter = FWAdapter(file_input, context)
-    fw_adapter.classify(get_profile('main.yml'))
-    add_qc_info(context, file_input, name=PKG_NAME, version=__version__)
+    log.info('Starting classification.')
+    if file_input['object']['type'] == 'nifti':
+        fw_adapter = NiftiFWAdapter(file_input, context)
+    else:
+        fw_adapter = FWAdapter(file_input, context)
+    result = fw_adapter.classify(profile)
+    log.info(f'Finished classification. Result: {result}')
+    if not result:
+        log.warning('Unsuccessful classification')
+    log.info('Adding gear qc info.')
+    info = add_qc_info(context, file_input, name=PKG_NAME, version=__version__)
+    context.update_file_metadata(file_input['location']['name'], info=info)
 
-    return 0
+    return int(not result)
