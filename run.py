@@ -3,13 +3,13 @@
 import logging
 import sys
 import typing as t
-
-from flywheel_gear_toolkit import GearToolkitContext
-from fw_gear_file_classifier.main import classify
-from fw_gear_file_classifier.parser import parse_config
-from fw_classification import Profile
 from pathlib import Path
 
+from flywheel_gear_toolkit import GearToolkitContext
+from fw_classification import Profile
+
+from fw_gear_file_classifier.main import classify
+from fw_gear_file_classifier.parser import parse_config
 
 log = logging.getLogger(__name__)
 
@@ -28,8 +28,7 @@ def main(context: GearToolkitContext) -> None:  # pragma: no cover
     if tag:
         tags.append(tag)
     context.update_file_metadata(
-        context.get_input("file-input")['location']['name'],
-        tags=tags
+        context.get_input("file-input")["location"]["name"], tags=tags
     )
     sys.exit(e_code)
 
