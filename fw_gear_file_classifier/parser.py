@@ -28,11 +28,15 @@ def parse_config(
     classify_context = gear_context.get_input("classifications")
     custom_block = None
     if classify_context and classify_context.get("value", {}):
-        custom_block = block_from_context_classifications(classify_context.get("value"))
-        log.info(
-            f"Found custom classification in project context, parsed as {custom_block}"
-        )
-        # Add custom block to the end of the profile if it's defined.
-        profile.handle_block(custom_block, "custom")
+        log.debug(f"Context classification: {classify_context.get('value')}")
+        try:
+            custom_block = block_from_context_classifications(classify_context.get("value"))
+            log.info(
+                f"Found custom classification in project context, parsed as {custom_block}"
+            )
+            # Add custom block to the end of the profile if it's defined.
+            profile.handle_block(custom_block, "custom")
+        except:
+            log.warning(f"Could not handle context classification {classify_context.get('value')}")
 
     return file_input, profile
