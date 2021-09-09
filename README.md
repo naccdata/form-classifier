@@ -85,5 +85,5 @@ You can also set the same custom classifications above via the UI custom info bu
 
 ## Contributing
 
-For more information about how to get started contributing to that gear, 
+For more information about how to get started contributing to that gear,
 checkout [CONTRIBUTING.md](CONTRIBUTING.md).

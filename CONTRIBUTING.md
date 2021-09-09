@@ -12,7 +12,7 @@ After cloning the repo:
 
 ## Dependency management
 
-This gear uses [`poetry`](https://python-poetry.org/) to manage dependencies, 
+This gear uses [`poetry`](https://python-poetry.org/) to manage dependencies,
 develop, build and publish.
 
 ### Dependencies
