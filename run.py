@@ -3,7 +3,6 @@
 import logging
 import sys
 import typing as t
-from pathlib import Path
 
 from flywheel_gear_toolkit import GearToolkitContext
 from fw_classification import Profile
@@ -18,7 +17,6 @@ def main(context: GearToolkitContext) -> None:  # pragma: no cover
     """Parse config and run."""
     # Parse config
     file_input: t.Dict[str, t.Any]
-    output_dir: Path
     profile: Profile
     file_input, profile = parse_config(context)
     # Run main entry

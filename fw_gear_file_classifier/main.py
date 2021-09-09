@@ -1,8 +1,6 @@
 """Main module."""
-import json
 import logging
-from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict
 
 from flywheel_gear_toolkit import GearToolkitContext
 from flywheel_gear_toolkit.utils.qc import add_qc_info
