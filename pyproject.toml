@@ -20,7 +20,7 @@ python = "^3.8"
 fw-core-client = "^1.0.0"
 fw-file = "^1.0.0"
 flywheel-gear-toolkit = "^0.4.0"
-fw-classification = {path = "classification-toolkit"}
+fw-classification = "^0.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.1.2"

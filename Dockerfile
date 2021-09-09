@@ -7,8 +7,6 @@ WORKDIR ${FLYWHEEL}
 RUN apt-get update && apt-get install -y git && \ 
     pip install "poetry==1.1.2"
 
-# TODO: Remove when classification toolkit public
-COPY classification-toolkit/ $FLYWHEEL/classification-toolkit
 # Installing main dependencies
 COPY pyproject.toml poetry.lock $FLYWHEEL/
 RUN poetry install --no-dev
