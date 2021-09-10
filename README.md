@@ -51,8 +51,7 @@ in a classification profile.
 
 #### Setting via SDK
 
-Say you have a custom SeriesDescription that looks like "my-test-series-description"
-and you want to classify these files as `Intent: Structural, Measurement: In-Plane`
+Given an example, custom SeriesDescription that looks like "my-test-series-description", you can re-classify these files as `Intent: Structural, Measurement: In-Plane` with the following:
 
 ```python
 import flywheel
