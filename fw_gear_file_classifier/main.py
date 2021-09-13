@@ -15,7 +15,16 @@ log = logging.getLogger(__name__)
 def classify(
     file_input: Dict[str, Any], context: GearToolkitContext, profile: Profile
 ) -> int:
-    """Run classification."""
+    """Run classification via fw-classification.
+
+    This function is more or less a wrapper around the classification-toolkit
+    [fw-classification](https://gitlab.com/flywheel-io/public/classification-toolkit),
+    with a few gear specific additions.
+
+    1. Set up correct adapter fw-classification adapter based on file type.
+    2. Run classification
+    3. Add gear qc information to input file.
+    """
     # Needs context for update_*_metadata methods
     log.info("Starting classification.")
     if file_input["object"]["type"] == "nifti":

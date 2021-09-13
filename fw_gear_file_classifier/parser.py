@@ -14,7 +14,17 @@ log = logging.getLogger(__name__)
 def parse_config(
     gear_context: GearToolkitContext,
 ) -> Tuple[Dict[str, Any], Profile]:  # File input  # Profile to classify with
-    """Parse file-input from gear context."""
+    """Parse options from gear config.
+
+    Args:
+        gear_context (GearToolkitContext): Gear toolkit context.
+
+    Returns:
+        tuple:
+            - File input as a dictionary
+            - Profile to use for classification, defaults to the
+                classification-toolkits "main.yml"
+    """
     file_input: Dict[str, Any] = gear_context.get_input("file-input")
 
     # Get optional custom profile from input
@@ -22,6 +32,9 @@ def parse_config(
     if profile_path:
         profile = Profile(profile_path)
     else:
+        # Default to the classification-toolkit's "main.yml" which
+        #   should be a "catch-all" and is defined in the fw-classifcation
+        #   repo under (fw_classification/profiles/main.yml)
         profile = Profile(get_profile("main.yml"))
 
     # Get optional custom classifications from project context

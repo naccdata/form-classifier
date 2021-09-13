@@ -3,7 +3,11 @@
 ## Overview
 
 The file classifier gear provides a gear interface to the
-[classification-toolkit](https://gitlab.com/flywheel-io/public/classification-toolkit).
+[classification-toolkit](https://gitlab.com/flywheel-io/public/classification-toolkit)
+and is essentially just a wrapper around the classification-toolkit.
+
+For documentation on classification in general, please consult the
+[classification-toolkit documentation](https://flywheel-io.gitlab.io/public/classification-toolkit/)
 
 The file classifier gear uses the file type of the provided input to determine
 the proper
@@ -51,7 +55,8 @@ in a classification profile.
 
 #### Setting via SDK
 
-Given an example, custom SeriesDescription that looks like "my-test-series-description", you can re-classify these files as `Intent: Structural, Measurement: In-Plane` with the following:
+Given an example, custom SeriesDescription that looks like "my-test-series-description",
+you can re-classify these files as `Intent: Structural, Measurement: In-Plane` with the following:
 
 ```python
 import flywheel
