@@ -20,7 +20,7 @@
     },
     "gear-builder": {
       "category": "classifier",
-      "image": "flywheel/fw-gear-file-classifier:0.1.0-dev.15"
+      "image": "flywheel/file-classifier:0.1.0-rc.2"
     }
   },
   "description": "Generic file classifier",
@@ -51,8 +51,8 @@
   "label": "File Classifier",
   "license": "MIT",
   "maintainer": "Flywheel <support@flywheel.io>",
-  "name": "fw-gear-file-classifier",
+  "name": "file-classifier",
   "source": "https://gitlab.com/flywheel-io/flywheel-apps/classifier.git",
   "url": "https://gitlab.com/flywheel-io/flywheel-apps/classifier.git",
-  "version": "0.1.0-dev.15"
+  "version": "0.1.0-rc.2"
 }
