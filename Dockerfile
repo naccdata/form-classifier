@@ -5,7 +5,7 @@ WORKDIR ${FLYWHEEL}
 
 # Dev install. git for pip editable install.
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y git="1:2.30.2-1" && \ 
+    apt-get install --no-install-recommends -y git='1:2.20.1-2+deb10u3' && \ 
     rm -rf /var/lib/apt/lists/* && \
     pip install --no-cache-dir "poetry==1.1.2"
 
