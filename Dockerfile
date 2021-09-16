@@ -4,8 +4,9 @@ ENV FLYWHEEL="/flywheel/v0"
 WORKDIR ${FLYWHEEL}
 
 # Dev install. git for pip editable install.
+# hadolint ignore=DL3008
 RUN apt-get update && \
-    apt-get install --no-install-recommends -y git='1:2.20.1-2+deb10u3' && \ 
+    apt-get install --no-install-recommends -y git && \ 
     rm -rf /var/lib/apt/lists/* && \
     pip install --no-cache-dir "poetry==1.1.2"
 
