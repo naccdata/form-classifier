@@ -2,10 +2,8 @@
 """The run script."""
 import logging
 import sys
-import typing as t
 
 from flywheel_gear_toolkit import GearToolkitContext
-from fw_classification import Profile
 
 from fw_gear_file_classifier.main import classify
 from fw_gear_file_classifier.parser import parse_config
@@ -16,8 +14,6 @@ log = logging.getLogger(__name__)
 def main(context: GearToolkitContext) -> None:  # pragma: no cover
     """Parse config and run."""
     # Parse config
-    file_input: t.Dict[str, t.Any]
-    profile: Profile
     file_input, profile = parse_config(context)
     # Run main entry
     e_code = classify(file_input, context, profile)
