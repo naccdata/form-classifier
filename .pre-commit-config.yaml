@@ -1,20 +1,13 @@
 repos:
-  # Hooks for non python files
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: master
+  - repo: https://gitlab.com/flywheel-io/tools/etc/qa-ci
+    rev: fe9535c24ec03fa6801baa7d24d876bd5f1e4c9a
     hooks:
-    - id: check-json
-    - id: check-toml
-    - id: pretty-format-json
-      args: ["--indent=2","--no-sort-keys","--autofix"]
-    - id: no-commit-to-branch           # protect main, master branch
-      args: ["--branch","master","--branch","main"]
+      - id: test:flywheel-lint
+      - id: test:helm-check
+      - id: test:pre-commit:isort
+      - id: test:pre-commit:mypy
+      - id: test:pre-commit:pylint
+      - id: test:pre-commit:pylint-tests
+      - id: test:pre-commit:pytest
+      - id: publish:docker:test
 
-  # python related hooks
-  - repo: https://gitlab.com/flywheel-io/flywheel-apps/utils/pre-commit-hooks
-    rev: master
-    hooks:
-      - id: isort               # sort import section
-      - id: black               # linting
-      - id: validate-manifest   # validate manifest.json
-      - id: pytest
