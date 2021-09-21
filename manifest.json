@@ -20,7 +20,7 @@
     },
     "gear-builder": {
       "category": "classifier",
-      "image": "flywheel/file-classifier:0.1.0-rc.2"
+      "image": "flywheel/file-classifier:0.1.0"
     }
   },
   "description": "Generic file classifier",
@@ -52,7 +52,7 @@
   "license": "MIT",
   "maintainer": "Flywheel <support@flywheel.io>",
   "name": "file-classifier",
-  "source": "https://gitlab.com/flywheel-io/flywheel-apps/classifier.git",
-  "url": "https://gitlab.com/flywheel-io/flywheel-apps/classifier.git",
-  "version": "0.1.0-rc.2"
+  "source": "https://gitlab.com/flywheel-io/flywheel-apps/file-classifier.git",
+  "url": "https://gitlab.com/flywheel-io/flywheel-apps/file-classifier.git",
+  "version": "0.1.0"
 }

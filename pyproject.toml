@@ -10,7 +10,7 @@ keywords = [
     "Gears",
     "Classification"
 ]
-repository = "https://gitlab.com/flywheel-io/flywheel-apps/classifier.git"
+repository = "https://gitlab.com/flywheel-io/flywheel-apps/file-classifier.git"
 classifiers = [
     "Topic :: Scientific/Engineering"
 ]
