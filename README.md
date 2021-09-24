@@ -43,8 +43,25 @@ used to classify, therefore they get highest priority.
 ### Configuration
 
 * __debug__ (boolean, default False): Include debug statements in output.
+* __profile_url__ (str): Optional git url to profile to include
 * __tag__ (str, default 'file-classifier'): String to tag the file after
 classification. Useful for gear-rule pipelines triggered by tags.
+
+### Which profile will be used?
+
+The priority for determining which profile will be used is as so:
+
+1. Profile passed in via the _config_ option `profile_url`
+2. Profile passed in via the _input_ option `profile`
+3. Default profile `main.yml` described in the
+[classification-profiles](https://gitlab.com/flywheel-io/public/classification-profiles)
+repo.
+
+The profile being used will be printed out at the beginning of the gear.
+
+**Note**: _After_ the profile has been determined, context classifications will be
+added as a block to that profile, i.e. context-classifications _always_ have the
+highest priority.
 
 ### Context Classifications
 
