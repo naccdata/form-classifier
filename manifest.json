@@ -8,11 +8,6 @@
       "description": "Log debug messages",
       "type": "boolean"
     },
-    "profile_url": {
-      "type": "string",
-      "description": "Optional git url to profile.",
-      "default": ""
-    },
     "tag": {
       "default": "file-classifier",
       "description": "The tag to be added on input file upon run completion.",
@@ -25,7 +20,7 @@
     },
     "gear-builder": {
       "category": "classifier",
-      "image": "flywheel/file-classifier:0.2.0"
+      "image": "flywheel/file-classifier:0.2.0-rc.1"
     }
   },
   "description": "Generic file classifier",
@@ -59,5 +54,5 @@
   "name": "file-classifier",
   "source": "https://gitlab.com/flywheel-io/flywheel-apps/file-classifier.git",
   "url": "https://gitlab.com/flywheel-io/flywheel-apps/file-classifier.git",
-  "version": "0.2.0"
+  "version": "0.2.0-rc.1"
 }

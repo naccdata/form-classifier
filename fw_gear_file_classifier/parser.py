@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
 
 from flywheel_gear_toolkit import GearToolkitContext
-from fw_classification.classify import Profile, includes
+from fw_classification.classify import Profile
 from fw_classification.classify.block import Block
 
 log = logging.getLogger(__name__)
@@ -29,25 +29,17 @@ def parse_config(
                 classification-toolkits "main.yml"
     """
     file_input: Dict[str, Any] = gear_context.get_input("file-input")
-
-    # Get optional custom profile from config
-    profile_url: Optional[str] = gear_context.config.get("profile_url", "")
-    config_profile: Optional[Path] = None
-    if profile_url:
-        profile = Profile(includes.get_git_profile(profile_url))
-        log.info(f"Using profile from config {profile_url}")
+    # Get optional custom profile from input
+    profile_path: Optional[Path] = gear_context.get_input_path("profile")
+    if profile_path:
+        log.info(f"Using profile from input {profile_path}")
+        profile = Profile(profile_path)
     else:
-        # Get optional custom profile from input
-        profile_path: Optional[Path] = gear_context.get_input_path("profile")
-        if profile_path:
-            log.info(f"Using profile from input {profile_path}")
-            profile = Profile(profile_path)
-        else:
-            # Default to the classification-toolkit's "main.yml" which
-            #   should be a "catch-all" and is defined in the fw-classifcation
-            #   repo under (fw_classification/profiles/main.yml)
-            log.info("Using default profile 'main.yml'")
-            profile = Profile(default_profiles / "main.yml")
+        # Default to the classification-toolkit's "main.yml" which
+        #   should be a "catch-all" and is defined in the fw-classifcation
+        #   repo under (fw_classification/profiles/main.yml)
+        log.info("Using default profile 'main.yml'")
+        profile = Profile(default_profiles / "main.yml")
 
     # Get optional custom classifications from project context
     classify_context = gear_context.get_input("classifications")
