@@ -43,7 +43,6 @@ used to classify, therefore they get highest priority.
 ### Configuration
 
 * __debug__ (boolean, default False): Include debug statements in output.
-* __profile_url__ (str): Optional git url to profile to include
 * __tag__ (str, default 'file-classifier'): String to tag the file after
 classification. Useful for gear-rule pipelines triggered by tags.
 
@@ -51,9 +50,8 @@ classification. Useful for gear-rule pipelines triggered by tags.
 
 The priority for determining which profile will be used is as so:
 
-1. Profile passed in via the _config_ option `profile_url`
-2. Profile passed in via the _input_ option `profile`
-3. Default profile `main.yml` described in the
+1. Profile passed in via the _input_ option `profile`
+2. Default profile `main.yml` described in the
 [classification-profiles](https://gitlab.com/flywheel-io/public/classification-profiles)
 repo.
 
