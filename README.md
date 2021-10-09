@@ -50,7 +50,7 @@ classification. Useful for gear-rule pipelines triggered by tags.
 
 The priority for determining which profile will be used is as so:
 
-1. Profile passed in via the _input_ option `profile`
+1. Profile passed in via the optional _input_ `profile`
 2. Default profile `main.yml` described in the
 [classification-profiles](https://gitlab.com/flywheel-io/public/classification-profiles)
 repo.
