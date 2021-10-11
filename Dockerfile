@@ -1,4 +1,4 @@
-FROM python:3.8-slim as base
+FROM python:3.9-slim as base
 
 ENV FLYWHEEL="/flywheel/v0"
 WORKDIR ${FLYWHEEL}
@@ -16,9 +16,12 @@ RUN poetry install --no-dev
 
 # Installing the current project (most likely to change, above layer can be cached)
 # Note: poetry requires a README.md to install the current project
-COPY run.py manifest.json README.md $FLYWHEEL/
+COPY run.py manifest.json .gitmodules README.md $FLYWHEEL/
 COPY fw_gear_file_classifier $FLYWHEEL/fw_gear_file_classifier
-RUN poetry install --no-dev
+COPY .git $FLYWHEEL/.git
+RUN git submodule init && \
+    git submodule update --recursive && \
+    poetry install --no-dev
 
 # Configure entrypoint
 RUN chmod a+x $FLYWHEEL/run.py

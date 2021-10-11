@@ -6,9 +6,12 @@ from typing import Any, Dict, Optional, Tuple
 from flywheel_gear_toolkit import GearToolkitContext
 from fw_classification.classify import Profile
 from fw_classification.classify.block import Block
-from fw_classification.profiles import get_profile
 
 log = logging.getLogger(__name__)
+
+default_profiles = (
+    Path(__file__).parents[0] / "classification-profiles/profiles"
+).resolve()
 
 
 def parse_config(
@@ -26,16 +29,17 @@ def parse_config(
                 classification-toolkits "main.yml"
     """
     file_input: Dict[str, Any] = gear_context.get_input("file-input")
-
     # Get optional custom profile from input
     profile_path: Optional[Path] = gear_context.get_input_path("profile")
     if profile_path:
+        log.info(f"Using profile from input {profile_path}")
         profile = Profile(profile_path)
     else:
         # Default to the classification-toolkit's "main.yml" which
         #   should be a "catch-all" and is defined in the fw-classifcation
         #   repo under (fw_classification/profiles/main.yml)
-        profile = Profile(get_profile("main.yml"))
+        log.info("Using default profile 'main.yml'")
+        profile = Profile(default_profiles / "main.yml")
 
     # Get optional custom classifications from project context
     classify_context = gear_context.get_input("classifications")

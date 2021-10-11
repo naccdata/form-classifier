@@ -1,0 +1,3 @@
+[submodule "fw_gear_file_classifier/classification-profiles"]
+	path = fw_gear_file_classifier/classification-profiles
+	url = https://gitlab.com/flywheel-io/public/classification-profiles.git

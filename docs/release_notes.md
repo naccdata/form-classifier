@@ -1,15 +1,16 @@
 # Release notes
 
-## 0.1.0
+## 0.2.0
+
+__Enhancement__:
+
+* Allow passing in a git profile via the config `profile` option.
+* Improve logging around profile selection.
 
 __Documentation__:
 
-* Add `docs`folder
-* Add `docs/release_notes.md`
+* Update docs on priority of profiles in profile selection.
 
-Notes: Categories used in release notes should match one of the following:
+## 0.1.0
 
-* Fixes
-* Enhancements
-* Documentation
-* Maintenance
+Initial release

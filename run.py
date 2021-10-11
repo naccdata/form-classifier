@@ -19,7 +19,7 @@ def main(context: GearToolkitContext) -> None:  # pragma: no cover
     e_code = classify(file_input, context, profile)
     tags = context.get_input("file-input")["object"]["tags"][:]  # copy
     tag = context.config.get("tag")
-    if tag:
+    if tag and tag not in tags:
         tags.append(tag)
     context.update_file_metadata(context.get_input_filename("file-input"), tags=tags)
     sys.exit(e_code)

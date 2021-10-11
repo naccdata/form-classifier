@@ -1,9 +1,9 @@
 """Module to test parser.py"""
 import logging
+from pathlib import Path
 from unittest.mock import MagicMock
 
 import pytest
-from fw_classification.profiles import get_profile
 
 from fw_gear_file_classifier.parser import parse_config
 
@@ -17,7 +17,10 @@ def test_parse_config_basic(mocker):
     get_input_args = gc.get_input.call_args_list
     assert get_input_args[0].args == ("file-input",)
     assert get_input_args[1].args == ("classifications",)
-    profile_mock.assert_called_once_with(get_profile("main.yml"))
+    profile_mock.assert_called_once_with(
+        Path(__file__).parents[1]
+        / "fw_gear_file_classifier/classification-profiles/profiles/main.yml"
+    )
     assert file_input is None
     assert profile == profile_mock.return_value
 
