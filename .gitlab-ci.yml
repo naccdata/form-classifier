@@ -1,4 +1,4 @@
 include:
   - project: flywheel-io/tools/etc/qa-ci
-    ref: 08970673338f2e7bd745eaed65db82f9481cc450
+    ref: 0dedc0e9295a9397554f8f773481269b5c4cca8f
     file: ci/gears.yml
