@@ -46,7 +46,7 @@
     },
     "classifications": {
       "base": "context",
-       "optional": true
+      "optional": true
     }
   },
   "label": "File Classifier",
