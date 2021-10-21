@@ -45,7 +45,8 @@
       "read-only": true
     },
     "classifications": {
-      "base": "context"
+      "base": "context",
+       "optional": true
     }
   },
   "label": "File Classifier",
