@@ -1,5 +1,11 @@
 # Release notes
 
+## 0.3.0
+
+__Maintenance__:
+
+* Make context classifications an optional input.
+
 ## 0.2.0
 
 __Enhancement__:
