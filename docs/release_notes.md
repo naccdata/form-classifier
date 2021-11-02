@@ -1,5 +1,12 @@
 # Release notes
 
+## 0.4.0
+
+__Maintenance__:
+
+* Remove classifications as context input
+* Check for project classifications via API
+
 ## 0.3.0
 
 __Maintenance__:
