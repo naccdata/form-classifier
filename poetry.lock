@@ -221,7 +221,7 @@ python-versions = ">=2.7"
 
 [[package]]
 name = "flywheel-gear-toolkit"
-version = "0.5.1"
+version = "0.5.6"
 description = "Tooling for developing Flywheel gears"
 category = "main"
 optional = false
@@ -231,8 +231,10 @@ python-versions = ">=3.8,<4.0"
 dotty-dict = ">=1.2.1,<2.0.0"
 flywheel-gears = ">=0.2,<0.3"
 fw-file = {version = ">=1,<2", optional = true, markers = "extra == \"all\" or extra == \"fw-file\" or extra == \"dicom\""}
+fw-meta = ">=1.0.1,<2.0.0"
 jsonschema = ">=3.2.0,<4.0.0"
 nibabel = {version = ">=3.2.1,<4.0.0", optional = true, markers = "extra == \"all\" or extra == \"dicom\" or extra == \"nipype\""}
+pathvalidate = ">=2.5.0,<3.0.0"
 pydantic = ">=1.8.1,<2.0.0"
 
 [package.extras]
@@ -257,7 +259,7 @@ rfc3987 = ">=1.3.7"
 
 [[package]]
 name = "fw-classification"
-version = "0.2.2"
+version = "0.2.3"
 description = "Flywheel classification toolkit."
 category = "main"
 optional = false
@@ -271,9 +273,9 @@ fw-file = ">=1.0.0,<2.0.0"
 typer = ">=0.3.2,<0.4.0"
 
 [package.extras]
-all = ["fw-core-client (>=1.0.0,<2.0.0)", "flywheel-gear-toolkit (>=0.4,<0.5)"]
+all = ["fw-core-client (>=1.0.0,<2.0.0)", "flywheel-gear-toolkit (>=0.5,<0.6)"]
 fw = ["fw-core-client (>=1.0.0,<2.0.0)"]
-geartk = ["flywheel-gear-toolkit (>=0.4,<0.5)"]
+geartk = ["flywheel-gear-toolkit (>=0.5,<0.6)"]
 
 [[package]]
 name = "fw-core-client"
@@ -1499,7 +1501,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "6434cb9352f713cd6e8854009ebf8dc0daa266f20a81b3e519f68e908fc70491"
+content-hash = "7f72b96692505a827dc9960491f6f1fb15c2e16423be342d41a59c7aa9b62258"
 
 [metadata.files]
 appdirs = [
@@ -1711,13 +1713,13 @@ entrypoints = [
     {file = "entrypoints-0.3.tar.gz", hash = "sha256:c70dd71abe5a8c85e55e12c19bd91ccfeec11a6e99044204511f9ed547d48451"},
 ]
 flywheel-gear-toolkit = [
-    {file = "flywheel_gear_toolkit-0.5.1-py3-none-any.whl", hash = "sha256:53c21095734fad1185d47e856a7dda2ef6c8b34230ccafec2e5082d9e1ca7a98"},
+    {file = "flywheel_gear_toolkit-0.5.6-py3-none-any.whl", hash = "sha256:be134f33a1084c7d39c79cb721c37a8ca16f16cbbc98fcfe3bc48b00bebe8b7d"},
 ]
 flywheel-gears = [
     {file = "flywheel_gears-0.2.1-py2.py3-none-any.whl", hash = "sha256:8f09880c8227c469be5e7e7a2977cb136b2a40565a0b91e6be5be33e8df32f24"},
 ]
 fw-classification = [
-    {file = "fw_classification-0.2.2-py3-none-any.whl", hash = "sha256:6791f7a4cc5908a10b84d52562bd771abfbe1bb07aab0f2012cb03c96543a943"},
+    {file = "fw_classification-0.2.3-py3-none-any.whl", hash = "sha256:b65120cf5d4e6ee76ac64f349191779c0f7cfa438c9413cbbae5b589c328f163"},
 ]
 fw-core-client = [
     {file = "fw_core_client-1.0.2-py3-none-any.whl", hash = "sha256:94aed85b341aedcfc5ddd210081789a05437b1573322abf02472a61a59724a2e"},
