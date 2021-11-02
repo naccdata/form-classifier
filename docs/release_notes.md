@@ -1,5 +1,11 @@
 # Release notes
 
+## 0.3.1
+
+__Maintenance__:
+
+* Update fw-classification to include classifications on bval/bvec files.
+
 ## 0.3.0
 
 __Maintenance__:
