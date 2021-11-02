@@ -1,9 +1,11 @@
 # Release notes
 
-## 0.3.1
+## 0.4.0
 
 __Maintenance__:
 
+* Remove classifications as context input
+* Check for project classifications via API
 * Update fw-classification to include classifications on bval/bvec files.
 
 ## 0.3.0
