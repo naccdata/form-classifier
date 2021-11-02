@@ -1,34 +1,39 @@
 """Module to test parser.py"""
 import logging
 from pathlib import Path
-from unittest.mock import MagicMock
 
 import pytest
 
 from fw_gear_file_classifier.parser import parse_config
 
 
-def test_parse_config_basic(mocker):
+@pytest.fixture
+def default_response(api, context_with_key):
+    context_with_key.get_input.return_value = {
+        "hierarchy": {"type": "acquisition", "id": 1}
+    }
+    api.add_response("/api/acquisitions/1", {"parents": {"project": 1}})
+    api.add_response("/api/projects/1", {"info": {}, "label": "test"})
+    return context_with_key, api
+
+
+def test_parse_config_basic(mocker, default_response):
     profile_mock = mocker.patch("fw_gear_file_classifier.parser.Profile")
-    gc = MagicMock()
-    gc.get_input.return_value = None
+    gc, _ = default_response
     gc.get_input_path.return_value = None
-    file_input, profile = parse_config(gc)
+    _, profile = parse_config(gc)
     get_input_args = gc.get_input.call_args_list
     assert get_input_args[0].args == ("file-input",)
-    assert get_input_args[1].args == ("classifications",)
     profile_mock.assert_called_once_with(
         Path(__file__).parents[1]
         / "fw_gear_file_classifier/classification-profiles/profiles/main.yml"
     )
-    assert file_input is None
     assert profile == profile_mock.return_value
 
 
-def test_parse_config_custom_profile(mocker):
+def test_parse_config_custom_profile(mocker, default_response):
     profile_mock = mocker.patch("fw_gear_file_classifier.parser.Profile")
-    gc = MagicMock()
-    gc.get_input.return_value = None
+    gc, _ = default_response
     _ = parse_config(gc)
     profile_mock.assert_called_once_with(gc.get_input_path.return_value)
 
@@ -68,12 +73,19 @@ def test_parse_config_custom_profile(mocker):
         ("random test", True),
     ],
 )
-def test_parse_config_custom_block(mocker, block_raw, err, caplog):
+def test_parse_config_custom_block(
+    mocker, context_with_key, api, block_raw, err, caplog
+):
     caplog.set_level(logging.WARNING)
+    context_with_key.get_input.return_value = {
+        "hierarchy": {"type": "acquisition", "id": 1}
+    }
+    api.add_response("/api/acquisitions/1", {"parents": {"project": 1}})
+    api.add_response(
+        "/api/projects/1", {"label": "test", "info": {"classifications": block_raw}}
+    )
     profile_mock = mocker.patch("fw_gear_file_classifier.parser.Profile")
-    gc = MagicMock()
-    gc.get_input.return_value = {"value": block_raw}
-    _ = parse_config(gc)
+    _ = parse_config(context_with_key)
     if err:
         assert caplog.record_tuples[-1][1] == 30
     else:

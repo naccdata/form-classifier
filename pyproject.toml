@@ -35,6 +35,7 @@ pydocstyle = "^5.1.1"
 mypy = "^0.790"
 jupyter = "^1.0.0"
 jupyter-client = "6.1.11"
+fw-http-testserver = "^1.0.0"
 
 
 [build-system]

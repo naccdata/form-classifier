@@ -6,6 +6,9 @@ from typing import Any, Dict, Optional, Tuple
 from flywheel_gear_toolkit import GearToolkitContext
 from fw_classification.classify import Profile
 from fw_classification.classify.block import Block
+from fw_core_client import CoreClient
+
+from . import PKG_NAME, __version__
 
 log = logging.getLogger(__name__)
 
@@ -42,12 +45,14 @@ def parse_config(
         profile = Profile(default_profiles / "main.yml")
 
     # Get optional custom classifications from project context
-    classify_context = gear_context.get_input("classifications")
+    project = get_parent_project(file_input, gear_context)
+    log.info(f"Looking for custom classifications in project {project.label}")
+    classify_context = project.get("info", {}).get("classifications", {})
     custom_block = None
-    if classify_context and classify_context.get("value", {}):
-        log.debug(f"Context classification: {classify_context.get('value')}")
+    if classify_context:
+        log.debug(f"Context classification: {classify_context}")
         try:
-            block = {"name": "custom", "rules": classify_context.get("value")}
+            block = {"name": "custom", "rules": classify_context}
             custom_block, err = Block.from_dict(block)
             if err:
                 log.error("\n".join([str(e) for e in err]))
@@ -60,8 +65,20 @@ def parse_config(
             profile.handle_block(custom_block, "custom")  # type: ignore
         except:  # pylint: disable=bare-except
             log.warning(
-                "Could not handle context classification "
-                f"{classify_context.get('value')}"
+                "Could not handle context classification " f"{classify_context}"
             )
 
     return file_input, profile
+
+
+def get_parent_project(file_input: dict, context: GearToolkitContext):
+    """Find parent project for a given file."""
+    api_key = context.config_json["inputs"]["api-key"]["key"]
+    log.debug("Instantiating CoreClient.")
+    fw = CoreClient(api_key=api_key, client_name=PKG_NAME, client_version=__version__)
+    parent_ref = file_input["hierarchy"]
+    log.debug("Getting parent container.")
+    parent = fw.get(f"/{parent_ref['type']}s/{parent_ref['id']}")
+    log.debug("Getting parent project.")
+    project = fw.get(f"/projects/{parent['parents']['project']}")
+    return project

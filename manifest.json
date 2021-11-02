@@ -43,10 +43,6 @@
     "api-key": {
       "base": "api-key",
       "read-only": true
-    },
-    "classifications": {
-      "base": "context",
-      "optional": true
     }
   },
   "label": "File Classifier",

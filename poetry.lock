@@ -220,8 +220,26 @@ optional = false
 python-versions = ">=2.7"
 
 [[package]]
+name = "flask"
+version = "2.0.2"
+description = "A simple framework for building complex web applications."
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+click = ">=7.1.2"
+itsdangerous = ">=2.0"
+Jinja2 = ">=3.0"
+Werkzeug = ">=2.0"
+
+[package.extras]
+async = ["asgiref (>=3.2)"]
+dotenv = ["python-dotenv"]
+
+[[package]]
 name = "flywheel-gear-toolkit"
-version = "0.5.1"
+version = "0.5.6"
 description = "Tooling for developing Flywheel gears"
 category = "main"
 optional = false
@@ -231,8 +249,10 @@ python-versions = ">=3.8,<4.0"
 dotty-dict = ">=1.2.1,<2.0.0"
 flywheel-gears = ">=0.2,<0.3"
 fw-file = {version = ">=1,<2", optional = true, markers = "extra == \"all\" or extra == \"fw-file\" or extra == \"dicom\""}
+fw-meta = ">=1.0.1,<2.0.0"
 jsonschema = ">=3.2.0,<4.0.0"
 nibabel = {version = ">=3.2.1,<4.0.0", optional = true, markers = "extra == \"all\" or extra == \"dicom\" or extra == \"nipype\""}
+pathvalidate = ">=2.5.0,<3.0.0"
 pydantic = ">=1.8.1,<2.0.0"
 
 [package.extras]
@@ -327,6 +347,21 @@ python-versions = ">=3.8,<4.0"
 fw-utils = ">=1.0.0,<2.0.0"
 pydantic = ">=1.6.1,<2.0.0"
 requests = ">=2.24.0,<3.0.0"
+types-requests = ">=2.25,<3.0"
+
+[[package]]
+name = "fw-http-testserver"
+version = "1.0.0"
+description = "HTTP test server for mocking services"
+category = "dev"
+optional = false
+python-versions = ">=3.8,<4.0"
+
+[package.dependencies]
+flask = ">=2.0.0,<3.0.0"
+fw-utils = ">=1.0.0,<2.0.0"
+pytest = ">=6.0.2,<7.0.0"
+requests = ">=2.25,<3.0"
 types-requests = ">=2.25,<3.0"
 
 [[package]]
@@ -468,6 +503,14 @@ pipfile_deprecated_finder = ["pipreqs", "requirementslib"]
 requirements_deprecated_finder = ["pipreqs", "pip-api"]
 colors = ["colorama (>=0.4.3,<0.5.0)"]
 plugins = ["setuptools"]
+
+[[package]]
+name = "itsdangerous"
+version = "2.0.1"
+description = "Safely pass data to untrusted environments and back."
+category = "dev"
+optional = false
+python-versions = ">=3.6"
 
 [[package]]
 name = "jedi"
@@ -1478,6 +1521,17 @@ optional = false
 python-versions = "*"
 
 [[package]]
+name = "werkzeug"
+version = "2.0.2"
+description = "The comprehensive WSGI web application library."
+category = "dev"
+optional = false
+python-versions = ">=3.6"
+
+[package.extras]
+watchdog = ["watchdog"]
+
+[[package]]
 name = "widgetsnbextension"
 version = "3.5.1"
 description = "IPython HTML widgets for Jupyter"
@@ -1499,7 +1553,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.9"
-content-hash = "6434cb9352f713cd6e8854009ebf8dc0daa266f20a81b3e519f68e908fc70491"
+content-hash = "b56e71012e4c35b49f3ef34046e8c77270444b432855819eb521d0ed4296c02b"
 
 [metadata.files]
 appdirs = [
@@ -1710,8 +1764,12 @@ entrypoints = [
     {file = "entrypoints-0.3-py2.py3-none-any.whl", hash = "sha256:589f874b313739ad35be6e0cd7efde2a4e9b6fea91edcc34e58ecbb8dbe56d19"},
     {file = "entrypoints-0.3.tar.gz", hash = "sha256:c70dd71abe5a8c85e55e12c19bd91ccfeec11a6e99044204511f9ed547d48451"},
 ]
+flask = [
+    {file = "Flask-2.0.2-py3-none-any.whl", hash = "sha256:cb90f62f1d8e4dc4621f52106613488b5ba826b2e1e10a33eac92f723093ab6a"},
+    {file = "Flask-2.0.2.tar.gz", hash = "sha256:7b2fb8e934ddd50731893bdcdb00fc8c0315916f9fcd50d22c7cc1a95ab634e2"},
+]
 flywheel-gear-toolkit = [
-    {file = "flywheel_gear_toolkit-0.5.1-py3-none-any.whl", hash = "sha256:53c21095734fad1185d47e856a7dda2ef6c8b34230ccafec2e5082d9e1ca7a98"},
+    {file = "flywheel_gear_toolkit-0.5.6-py3-none-any.whl", hash = "sha256:be134f33a1084c7d39c79cb721c37a8ca16f16cbbc98fcfe3bc48b00bebe8b7d"},
 ]
 flywheel-gears = [
     {file = "flywheel_gears-0.2.1-py2.py3-none-any.whl", hash = "sha256:8f09880c8227c469be5e7e7a2977cb136b2a40565a0b91e6be5be33e8df32f24"},
@@ -1727,6 +1785,9 @@ fw-file = [
 ]
 fw-http-client = [
     {file = "fw_http_client-1.1.0-py3-none-any.whl", hash = "sha256:d9f1066e4675db8129729442847a741f4dce0c0d2eca4a2fd02e52e16c352054"},
+]
+fw-http-testserver = [
+    {file = "fw_http_testserver-1.0.0-py3-none-any.whl", hash = "sha256:863bca397f0b7a850376b6462f847804f6312f7e8f618c64264d906c27cae862"},
 ]
 fw-meta = [
     {file = "fw_meta-1.0.1-py3-none-any.whl", hash = "sha256:5a03d4c70c351ba4c1b2e7d34885dd88ff3002d6fe071eac0b7d10399cc7e95f"},
@@ -1761,6 +1822,10 @@ ipywidgets = [
 isort = [
     {file = "isort-5.9.3-py3-none-any.whl", hash = "sha256:e17d6e2b81095c9db0a03a8025a957f334d6ea30b26f9ec70805411e5c7c81f2"},
     {file = "isort-5.9.3.tar.gz", hash = "sha256:9c2ea1e62d871267b78307fe511c0838ba0da28698c5732d54e2790bf3ba9899"},
+]
+itsdangerous = [
+    {file = "itsdangerous-2.0.1-py3-none-any.whl", hash = "sha256:5174094b9637652bdb841a3029700391451bd092ba3db90600dea710ba28e97c"},
+    {file = "itsdangerous-2.0.1.tar.gz", hash = "sha256:9e724d68fc22902a1435351f84c3fb8623f303fffcc566a4cb952df8c572cff0"},
 ]
 jedi = [
     {file = "jedi-0.18.0-py2.py3-none-any.whl", hash = "sha256:18456d83f65f400ab0c2d3319e48520420ef43b23a086fdc05dff34132f0fb93"},
@@ -2481,6 +2546,10 @@ wcwidth = [
 webencodings = [
     {file = "webencodings-0.5.1-py2.py3-none-any.whl", hash = "sha256:a0af1213f3c2226497a97e2b3aa01a7e4bee4f403f95be16fc9acd2947514a78"},
     {file = "webencodings-0.5.1.tar.gz", hash = "sha256:b36a1c245f2d304965eb4e0a82848379241dc04b865afcc4aab16748587e1923"},
+]
+werkzeug = [
+    {file = "Werkzeug-2.0.2-py3-none-any.whl", hash = "sha256:63d3dc1cf60e7b7e35e97fa9861f7397283b75d765afcaefd993d6046899de8f"},
+    {file = "Werkzeug-2.0.2.tar.gz", hash = "sha256:aa2bb6fc8dee8d6c504c0ac1e7f5f7dc5810a9903e793b6f715a9f015bdadb9a"},
 ]
 widgetsnbextension = [
     {file = "widgetsnbextension-3.5.1-py2.py3-none-any.whl", hash = "sha256:bd314f8ceb488571a5ffea6cc5b9fc6cba0adaf88a9d2386b93a489751938bcd"},
