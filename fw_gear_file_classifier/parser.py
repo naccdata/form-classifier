@@ -71,7 +71,7 @@ def parse_config(
     return file_input, profile
 
 
-def get_parent_project(file_input: dict, context: GearToolkitContext):
+def get_parent(file_input: dict, context: GearToolkitContext):
     """Find parent project for a given file."""
     api_key = context.config_json["inputs"]["api-key"]["key"]
     log.debug("Instantiating CoreClient.")
@@ -79,6 +79,12 @@ def get_parent_project(file_input: dict, context: GearToolkitContext):
     parent_ref = file_input["hierarchy"]
     log.debug("Getting parent container.")
     parent = fw.get(f"/{parent_ref['type']}s/{parent_ref['id']}")
+    return parent, fw
+
+
+def get_parent_project(file_input: dict, context: GearToolkitContext):
+    """Parent project of a particular file."""
+    parent, fw = get_parent(file_input, context)
     log.debug("Getting parent project.")
     project = fw.get(f"/projects/{parent['parents']['project']}")
     return project
