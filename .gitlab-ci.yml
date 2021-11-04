@@ -2,3 +2,13 @@ include:
   - project: flywheel-io/tools/etc/qa-ci
     ref: 0dedc0e9295a9397554f8f773481269b5c4cca8f
     file: ci/gears.yml
+
+update:profiles:
+  stage: update
+  rules:
+    - if: $UPSTREAM_PROJECT_ID && $UPSTREAM_TAG
+      when: always
+  script:
+    - ./bin/update_profiles.sh "$UPSTREAM_TAG"
+    - /ci/create_mr.sh update-profiles $CI_COMMIT_BRANCH
+      title="Update classification profile to $UPSTREAM_TAG"

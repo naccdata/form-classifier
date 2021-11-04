@@ -36,7 +36,7 @@ See documentation for creating a profile at the
 [classification-toolkit docs](https://flywheel-io.gitlab.io/public/classification-toolkit/profile.html)
 * __classifications__: An optional list of context classifications set at the
 project level, see
-[Setting context classifications](#context-classifications).  These
+[Setting project classifications](#project-classifications).  These
 classifications are added as the final block to the profile that is being
 used to classify, therefore they get highest priority.
 
@@ -61,9 +61,9 @@ The profile being used will be printed out at the beginning of the gear.
 added as a block to that profile, i.e. context-classifications _always_ have the
 highest priority.
 
-### Context Classifications
+### Project Classifications
 
-Context classifications can be set both in the UI or via the SDK.  They
+Project classifications can be set both in the UI or via the SDK.  They
 follow the same structure as a
 [block](https://flywheel-io.gitlab.io/public/classification-toolkit/profile.html#blocks)
 in a classification profile.

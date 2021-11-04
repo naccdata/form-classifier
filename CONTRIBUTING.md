@@ -28,6 +28,9 @@ update to the current version:
 * `git submodule init`
 * `git submodule update --recursive`
 
+Classification profiles will automatically be updated in this repo when they are changed
+in the upstream repo, see [Releases](#releases) for more information.
+
 ## Dependency management
 
 This gear uses [`poetry`](https://python-poetry.org/) to manage dependencies,
@@ -123,19 +126,13 @@ BUG:
 
 Where the rest of the file contains release notes for previous versions.
 
-### Creating a release
+### Releases
 
 See
 [Creating a release in qa-ci](https://gitlab.com/flywheel-io/tools/etc/qa-ci#creating-a-release)
 
-## Updating classification-profiles
-
-Since classification profiles are a submodule, updating is as easy as
-changing into the directory and pulling the new changes, then adding
-the directory and commiting:
-
-1. `cd fw_gear_file_classifier/classification-profiles`
-2. `git pull origin <branch>`
-3. `cd ../../`
-4. `git add fw_gear_file_classifier/classification-profiles`
-5. `git commit -m "Updated classification-profiles"`
+This repo has an added job to update profiles when there is an upstream change.  A
+publish job on
+[classification-profiles](https://gitlab.com/flywheel-io/public/classification-profiles)
+triggers the `update:profiles` job in this repo, which creates an MR with the profiles
+submodule checked out to the published version of classification-profiles.
