@@ -7,11 +7,11 @@ The file classifier gear provides a gear interface to the
 and is essentially just a wrapper around the classification-toolkit.
 
 For documentation on classification in general, please consult the
-[classification-toolkit documentation](https://flywheel-io.gitlab.io/public/classification-toolkit/)
+[classification-toolkit documentation](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/)
 
 The file classifier gear uses the file type of the provided input to determine
 the proper
-[adapter](https://flywheel-io.gitlab.io/public/classification-toolkit/adapters.html#flywheel-adapters)
+[adapter](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/adapters.html)
 to use.
 
 ## Supported file types
@@ -33,7 +33,7 @@ input.
 * __profile__: Optional profile to use for classification, if passed in, this
 will override the default classification profile and use what was passed in.
 See documentation for creating a profile at the
-[classification-toolkit docs](https://flywheel-io.gitlab.io/public/classification-toolkit/profile.html)
+[classification-toolkit docs](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/profile.html)
 * __classifications__: An optional list of context classifications set at the
 project level, see
 [Setting project classifications](#project-classifications).  These
@@ -65,7 +65,7 @@ highest priority.
 
 Project classifications can be set both in the UI or via the SDK.  They
 follow the same structure as a
-[block](https://flywheel-io.gitlab.io/public/classification-toolkit/profile.html#blocks)
+[block](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/profile.html#blocks)
 in a classification profile.
 
 #### Setting via SDK
