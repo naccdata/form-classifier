@@ -11,10 +11,3 @@ function update_submodules() {
 }
 
 update_submodules "$1"
-cd ../
-git add classification-profiles
-git commit --no-verify -m "MAIN: Update classification-profiles to version $1"
-
-
-
-
