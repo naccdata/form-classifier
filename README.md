@@ -57,7 +57,7 @@ repo.
 
 The profile being used will be printed out at the beginning of the gear.
 
-**Note**: _After_ the profile has been determined, context classifications will be
+__Note__: _After_ the profile has been determined, context classifications will be
 added as a block to that profile, i.e. context-classifications _always_ have the
 highest priority.
 

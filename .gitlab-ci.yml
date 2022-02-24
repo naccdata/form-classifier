@@ -1,6 +1,6 @@
 include:
   - project: flywheel-io/tools/etc/qa-ci
-    ref: 4f03fca4f2ebfb45071d9f86382752efffb1248a
+    ref: 9f3d473bc2ed4995b87bd7af646189fc87fcbbf6
     file: ci/gears.yml
 
 update:profiles:
