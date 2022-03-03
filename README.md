@@ -11,7 +11,7 @@ For documentation on classification in general, please consult the
 
 The file classifier gear uses the file type of the provided input to determine
 the proper
-[adapter](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/adapters.html)
+[adapter](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/fw-classification/adapters/)
 to use.
 
 ## Supported file types
@@ -33,7 +33,8 @@ input.
 * __profile__: Optional profile to use for classification, if passed in, this
 will override the default classification profile and use what was passed in.
 See documentation for creating a profile at the
-[classification-toolkit docs](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/profile.html)
+[classification-toolkit
+docs](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/fw-classification/profile/)
 * __classifications__: An optional list of context classifications set at the
 project level, see
 [Setting project classifications](#project-classifications).  These
@@ -52,7 +53,7 @@ The priority for determining which profile will be used is as so:
 
 1. Profile passed in via the optional _input_ `profile`
 2. Default profile `main.yml` described in the
-[classification-profiles](https://gitlab.com/flywheel-io/public/classification-profiles)
+[classification-profiles](https://gitlab.com/flywheel-io/public/fw-classification/fw-classification-profiles)
 repo.
 
 The profile being used will be printed out at the beginning of the gear.
@@ -65,7 +66,7 @@ highest priority.
 
 Project classifications can be set both in the UI or via the SDK.  They
 follow the same structure as a
-[block](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/profile.html#blocks)
+[block](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/fw-classification/profile/#block)
 in a classification profile.
 
 #### Setting via SDK
