@@ -3,11 +3,11 @@
 ## Overview
 
 The file classifier gear provides a gear interface to the
-[classification-toolkit](https://gitlab.com/flywheel-io/public/classification-toolkit)
-and is essentially just a wrapper around the classification-toolkit.
+[fw-classification](https://gitlab.com/flywheel-io/public/fw-classification) toolkit
+and is essentially just a wrapper around fw-classification.
 
 For documentation on classification in general, please consult the
-[classification-toolkit documentation](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/)
+[fw-classification documentation](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/)
 
 The file classifier gear uses the file type of the provided input to determine
 the proper
