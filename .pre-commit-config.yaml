@@ -1,6 +1,6 @@
 repos:
   - repo: https://gitlab.com/flywheel-io/tools/etc/qa-ci
-    rev: 9f3d473bc2ed4995b87bd7af646189fc87fcbbf6
+    rev: 9175d35e0bd374113d7643af2494de58a80ed1a7
     hooks:
       - id: test:flywheel-lint
       - id: test:helm-check
