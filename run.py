@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """The run script."""
 import logging
-import sys
+import typing as t
 
 from flywheel_gear_toolkit import GearToolkitContext
 
@@ -16,13 +16,9 @@ def main(context: GearToolkitContext) -> None:  # pragma: no cover
     # Parse config
     file_input, profile = parse_config(context)
     # Run main entry
-    e_code = classify(file_input, context, profile)
-    tags = context.get_input("file-input")["object"]["tags"][:]  # copy
+    _ = classify(file_input, context, profile)
     tag = context.config.get("tag")
-    if tag and tag not in tags:
-        tags.append(tag)
-    context.update_file_metadata(context.get_input_filename("file-input"), tags=tags)
-    sys.exit(e_code)
+    context.metadata.add_file_tags(file_input, t.cast(str, tag))
 
 
 if __name__ == "__main__":  # pragma: no cover
