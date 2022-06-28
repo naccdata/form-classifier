@@ -12,9 +12,7 @@ from . import PKG_NAME, __version__
 
 log = logging.getLogger(__name__)
 
-default_profiles = (
-    Path(__file__).parents[0] / "classification-profiles/profiles"
-).resolve()
+default_profiles = (Path(__file__).parents[0] / "classification_profiles").resolve()
 
 
 def parse_config(

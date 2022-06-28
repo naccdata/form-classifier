@@ -31,7 +31,8 @@ pytest-mock = "^3.3.1"
 fw-http-testserver = "^1.0.0"
 mypy = "^0.931"
 pre-commit = "^2.19.0"
-
+isort = "^5.10.1"
+pylint = "^2.14.3"
 
 [build-system]
 requires = ["poetry>=0.12"]
