@@ -1,5 +1,24 @@
 # Release notes
 
+## 0.5.0
+
+__Maintenance__:
+
+* Update fw-classification
+* Update CI
+
+__Enhancement__:
+
+* Update to newer GTK metadata methods
+* Reorganize output QC info.
+
+## 0.4.1-0.4.6
+
+__Maintenance__:
+
+* Update classification profiles to 0.2.2
+* Update CI
+
 ## 0.4.0
 
 __Maintenance__:
