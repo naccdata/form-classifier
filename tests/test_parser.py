@@ -26,7 +26,7 @@ def test_parse_config_basic(mocker, default_response):
     assert get_input_args[0].args == ("file-input",)
     profile_mock.assert_called_once_with(
         Path(__file__).parents[1]
-        / "fw_gear_file_classifier/classification-profiles/profiles/main.yml"
+        / "fw_gear_file_classifier/classification_profiles/main.yml"
     )
     assert profile == profile_mock.return_value
 

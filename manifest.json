@@ -1,7 +1,7 @@
 {
   "author": "Flywheel",
   "cite": "",
-  "command": "poetry run python run.py",
+  "command": "python run.py",
   "config": {
     "debug": {
       "default": false,
@@ -16,13 +16,13 @@
   },
   "custom": {
     "flywheel": {
-      "suite": "Curation"
+      "suite": "Curation",
+      "show-job": true
     },
     "gear-builder": {
       "category": "classifier",
-      "image": "flywheel/file-classifier:0.4.6"
-    },
-    "show-job": true
+      "image": "flywheel/file-classifier:0.4.6-rc.3"
+    }
   },
   "description": "Generic file classifier. This gear update the classification of a file based on the metadata attached to it, and therefore should only run AFTER gears which populate metadata on the file, such as file-metadata-curator. The gear takes as input a file, and an optional classification profile. The gear tags the input file upon completion.",
   "environment": {
@@ -77,5 +77,5 @@
   "name": "file-classifier",
   "source": "https://gitlab.com/flywheel-io/flywheel-apps/file-classifier.git",
   "url": "https://gitlab.com/flywheel-io/flywheel-apps/file-classifier.git",
-  "version": "0.4.6"
+  "version": "0.4.6-rc.3"
 }

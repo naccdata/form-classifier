@@ -1,3 +1,12 @@
+FROM alpine/git:v2.36.1 as profiles
+
+ENV PROFILE_VERSION=0.2.2
+
+RUN git clone --depth 1 \
+    --branch $PROFILE_VERSION \
+    https://gitlab.com/flywheel-io/public/fw-classification/fw-classification-profiles.git \
+    /root/profiles
+
 FROM flywheel/python:main.a30a2597 AS deps
 
 ENV FLYWHEEL="/flywheel/v0"
@@ -9,13 +18,9 @@ RUN poetry install --no-dev --no-root
 
 # Installing the current project (most likely to change, above layer can be cached)
 # Note: poetry requires a README.md to install the current project
-COPY run.py manifest.json .gitmodules README.md $FLYWHEEL/
-COPY fw_gear_file_classifier $FLYWHEEL/fw_gear_file_classifier
-COPY .git $FLYWHEEL/.git
-RUN git submodule init && \
-    git submodule update --recursive && \
-    poetry install --no-dev
+COPY . .
+COPY --from=profiles /root/profiles/profiles ./fw_gear_file_classifier/classification_profiles
+RUN poetry install --no-dev
 
 # Configure entrypoint
-RUN chmod a+x "$FLYWHEEL"/run.py
-ENTRYPOINT ["poetry","run","python","/flywheel/v0/run.py"]
+ENTRYPOINT ["python","/flywheel/v0/run.py"]

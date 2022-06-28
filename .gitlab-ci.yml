@@ -1,6 +1,6 @@
 include:
   - project: flywheel-io/tools/etc/qa-ci
-    ref: 9175d35e0bd374113d7643af2494de58a80ed1a7
+    ref: d7b0f917c9a5e07dcc27c7787b51ec9e4f095636
     file: ci/gears.yml
 
 update:profiles:
@@ -9,6 +9,6 @@ update:profiles:
     - if: $UPSTREAM_PROJECT_ID && $UPSTREAM_TAG
       when: always
   script:
-    - ./bin/update_profiles.sh "$UPSTREAM_TAG"
+    - sed -i "s|PROFILE_VERSION=.*|PROFILE_VERSION=$UPSTREAM_TAG|" Dockerfile
     - /ci/create_mr.sh update-profiles $CI_COMMIT_BRANCH
       title="Update classification profile to $UPSTREAM_TAG"
