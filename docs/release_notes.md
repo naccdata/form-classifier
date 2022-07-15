@@ -1,5 +1,11 @@
 # Release notes
 
+## 0.5.1
+
+__Enhancement__:
+
+* Allow referencing built-in profiles w/o git
+
 ## 0.5.0
 
 __Maintenance__:

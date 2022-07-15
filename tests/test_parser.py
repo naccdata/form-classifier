@@ -35,7 +35,10 @@ def test_parse_config_custom_profile(mocker, default_response):
     profile_mock = mocker.patch("fw_gear_file_classifier.parser.Profile")
     gc, _ = default_response
     _ = parse_config(gc)
-    profile_mock.assert_called_once_with(gc.get_input_path.return_value)
+    path = Path(__file__).parents[1] / "fw_gear_file_classifier/classification_profiles"
+    profile_mock.assert_called_once_with(
+        gc.get_input_path.return_value, include_search_dirs=[path]
+    )
 
 
 @pytest.mark.parametrize(
