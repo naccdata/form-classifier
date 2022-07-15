@@ -212,7 +212,7 @@ urllib3 = ">=1.15"
 
 [[package]]
 name = "fw-classification"
-version = "0.3.4"
+version = "0.3.5"
 description = "Flywheel classification toolkit."
 category = "main"
 optional = false
@@ -1078,9 +1078,7 @@ flywheel-gears = [
 flywheel-sdk = [
     {file = "flywheel_sdk-16.8.5-py2.py3-none-any.whl", hash = "sha256:4b85be7d6d9df6427fe3148a3066a4559d945056ed695569271a9be42b769e6c"},
 ]
-fw-classification = [
-    {file = "fw_classification-0.3.4-py3-none-any.whl", hash = "sha256:39abf155ec51fec4943a24d7c21c6a04096e287257e9f72a34d46a984766960e"},
-]
+fw-classification = []
 fw-core-client = [
     {file = "fw_core_client-1.1.1-py3-none-any.whl", hash = "sha256:6ad2ae079136d3664176a26781d9f8d6d9e6d30cdc61f31aec6a77576eac42d8"},
 ]

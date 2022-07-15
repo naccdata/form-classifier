@@ -34,7 +34,7 @@ def parse_config(
     profile_path: Optional[Path] = gear_context.get_input_path("profile")
     if profile_path:
         log.info(f"Using profile from input {profile_path}")
-        profile = Profile(profile_path)
+        profile = Profile(profile_path, include_search_dirs=[default_profiles])
     else:
         # Default to the classification-toolkit's "main.yml" which
         #   should be a "catch-all" and is defined in the fw-classifcation
