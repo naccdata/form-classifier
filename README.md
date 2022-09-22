@@ -6,15 +6,15 @@
 ## Overview
 
 The file classifier gear provides a gear interface to the
-[fw-classification](https://gitlab.com/flywheel-io/public/fw-classification) toolkit
-and is essentially just a wrapper around fw-classification.
+[fw-classification](https://gitlab.com/flywheel-io/scientific-solutions/lib/fw-classification)
+toolkit and is essentially just a wrapper around fw-classification.
 
 For documentation on classification in general, please consult the
-[fw-classification documentation](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/)
+[fw-classification documentation](https://flywheel-io.gitlab.io/scientific-solutions/lib/fw-classification/)
 
 The file classifier gear uses the file type of the provided input to determine
 the proper
-[adapter](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/fw-classification/adapters/)
+[adapter](https://flywheel-io.gitlab.io/scientific-solutions/lib/fw-classification/fw-classification/adapters/)
 to use.
 
 ## Supported file types
@@ -45,7 +45,7 @@ container.
 #### Profile
 
 file-classifier ships with [default
-profiles](https://gitlab.com/flywheel-io/public/fw-classification/fw-classification-profiles/-/tree/main/profiles)
+profiles](https://gitlab.com/flywheel-io/scientific-solutions/lib/fw-classification-profiles/-/tree/main/profiles)
 but the gear also accepts an input profile.  If you have custom needs beyond what is in
 the default profile, you will need to override the default profiles. See [Custom
 Classifications](#custom-classifications)
@@ -57,7 +57,7 @@ Classifications](#custom-classifications)
 will override the default classification profile and use what was passed in.
 See documentation for creating a profile at the
 [classification-toolkit
-docs](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/fw-classification/profile/)
+docs](https://flywheel-io.gitlab.io/scientific-solutions/lib/fw-classification/fw-classification/profile/)
 * __classifications__: An optional list of context classifications set at the
 project level, see
 [Setting custom classifications](#custom-classifications).  These
@@ -76,7 +76,7 @@ The priority for determining which profile will be used is as so:
 
 1. Profile passed in via the optional _input_ `profile`
 2. Default profile `main.yml` described in the
-[classification-profiles](https://gitlab.com/flywheel-io/public/fw-classification/fw-classification-profiles)
+[classification-profiles](https://gitlab.com/flywheel-io/scientific-solutions/lib/fw-classification-profiles)
 repo.
 
 The profile being used will be printed out at the beginning of the gear.
@@ -114,7 +114,7 @@ deleted:
 name: Custom classifier
 includes:
   # Include default MR
-  - https://gitlab.com/flywheel-io/public/fw-classification/fw-classification-profiles$profiles/MR.yaml
+  - https://gitlab.com/flywheel-io/scientific-solutions/lib/fw-classification-profiles$profiles/MR.yaml
 
 profile:
   - name: set_custom_deleted
@@ -136,7 +136,7 @@ profile:
 
 Custom classification can be added to project information.  These can be added either
 via the SDK or UI, and they follow the same structure as a `fw-classification` profile
-[block](https://flywheel-io.gitlab.io/public/fw-classification/fw-classification/fw-classification/profile/#block).
+[block](https://flywheel-io.gitlab.io/scientific-solutions/lib/fw-classification/fw-classification/profile/#block).
 
 !!! note
 
