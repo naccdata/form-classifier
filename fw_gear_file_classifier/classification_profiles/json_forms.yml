@@ -31,9 +31,9 @@ profile:
     depends_on:
       - json_form
     evaluate: "all"
-    description: Checks to see if the '$id' key exists
+    description: Checks to see if the 'module' key exists
     variables:
-      idkey: file.info.forms.json.-id
+      idkey: file.info.forms.json.module
     rules:
       - match_type: "all"
         match:
@@ -44,7 +44,7 @@ profile:
     evaluate: "first"
     description: set form type
     variables:
-      idkey: file.info.forms.json.-id
+      idkey: file.info.forms.json.module
       fc: file.classification
 
     depends_on:
@@ -84,7 +84,7 @@ profile:
   - name: set_form_version
     description: set form version
     variables:
-      idkey: file.info.forms.json.-id
+      idkey: file.info.forms.json.module
       fc: file.classification
 
     depends_on:
