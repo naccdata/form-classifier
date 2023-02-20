@@ -1,0 +1,5 @@
+---
+name: JSON Form Classifier
+includes:
+  - json_forms.yml
+

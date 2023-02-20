@@ -1,0 +1,125 @@
+---
+name: JSON Form Classifier
+profile:
+
+  - name: json_form
+    evaluate: "first"
+    rules:
+      - match_type: 'all'
+        match:
+          - key: file.type
+            is: source code
+          - key: file.mimetype
+            is: 'application/json'
+
+  - name: set_modality
+    description: Set modality if not set.
+    evaluate: "first"
+    depends_on:
+      - json_form
+    rules:
+      - match_type: "all"
+        match:
+          - not:
+            - key: file.modality
+              is: "Form"
+        action:
+          - key: file.modality
+            set: "Form"
+
+  - name: key_exists
+    depends_on:
+      - json_form
+    evaluate: "all"
+    description: Checks to see if the '$id' key exists
+    variables:
+      idkey: file.info.forms.json.-id
+    rules:
+      - match_type: "all"
+        match:
+          - key: $idkey
+            exists: true
+
+  - name: set_form_type
+    evaluate: "first"
+    description: set form type
+    variables:
+      idkey: file.info.forms.json.-id
+      fc: file.classification
+
+    depends_on:
+      - key_exists
+    rules:
+      ### UDS
+      - match_type: "all"
+        match:
+          - key: $idkey
+            startswith: "UDS"
+            case-sensitive: false
+        action:
+          - key: $fc.type
+            set: ['UDS']
+
+      ### FTLD
+      - match_type: "all"
+        match:
+          - key: $idkey
+            startswith: "FTLD"
+            case-sensitive: false
+        action:
+          - key: $fc.type
+            set: ['FTLD']
+
+
+      ### LBD
+      - match_type: "all"
+        match:
+          - key: $idkey
+            startswith: "LBD"
+            case-sensitive: false
+        action:
+          - key: $fc.type
+            set: [ 'LBD' ]
+
+  - name: set_form_version
+    description: set form version
+    variables:
+      idkey: file.info.forms.json.-id
+      fc: file.classification
+
+    depends_on:
+      - set_form_type
+    evaluate: "first"
+    rules:
+      - match_type: "any"
+        match:
+          - key: $idkey
+            regex: "^.*v1$"
+        action:
+          - key: $fc.Custom
+            set: ['v1']
+
+      - match_type: "any"
+        match:
+        - key: $idkey
+          regex: "^.*v2$"
+        action:
+          - key: $fc.Custom
+            set: [ 'v2' ]
+
+      - match_type: "any"
+        match:
+        - key: $idkey
+          regex: "^.*v3$"
+        action:
+          - key: $fc.Custom
+            set: [ 'v3' ]
+
+      - match_type: "any"
+        match:
+        - key: $idkey
+          regex: "^.*v4$"
+        action:
+          - key: $fc.Custom
+            set: [ 'v4' ]
+
