@@ -71,11 +71,11 @@
       "read-only": true
     }
   },
-  "label": "File Classifier",
+  "label": "Form Classifier - NACC",
   "license": "MIT",
   "maintainer": "Flywheel <support@flywheel.io>",
-  "name": "file-classifier",
-  "source": "https://gitlab.com/flywheel-io/flywheel-apps/file-classifier.git",
-  "url": "https://gitlab.com/flywheel-io/flywheel-apps/file-classifier.git",
+  "name": "form-classifier-nacc",
+  "source": "https://github.com/naccdata/file-classifier.git",
+  "url": "https://github.com/naccdata/file-classifier.git",
   "version": "0.0.1"
 }
