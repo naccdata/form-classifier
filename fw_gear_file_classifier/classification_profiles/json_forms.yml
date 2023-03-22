@@ -5,12 +5,12 @@ profile:
   - name: json_form
     evaluate: "first"
     rules:
-      - match_type: 'all'
+      - match_type: 'any'
         match:
           - key: file.type
-            is: source code
+            is: "source code"
           - key: file.mimetype
-            is: 'application/json'
+            is: "application/json"
 
   - name: set_modality
     description: Set modality if not set.
@@ -31,7 +31,7 @@ profile:
     depends_on:
       - json_form
     evaluate: "all"
-    description: Checks to see if the 'module' key exists
+    description: Checks to see if the '$id' key exists
     variables:
       idkey: file.info.forms.json.module
     rules:
