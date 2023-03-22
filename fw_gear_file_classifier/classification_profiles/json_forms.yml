@@ -31,7 +31,7 @@ profile:
     depends_on:
       - json_form
     evaluate: "all"
-    description: Checks to see if the '$id' key exists
+    description: Checks to see if the 'module' key exists
     variables:
       idkey: file.info.forms.json.module
     rules:
