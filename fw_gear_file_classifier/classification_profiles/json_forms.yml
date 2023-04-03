@@ -5,7 +5,7 @@ profile:
   - name: json_form
     evaluate: "first"
     rules:
-      - match_type: 'all'
+      - match_type: 'any'
         match:
           - key: file.type
             is: source code
@@ -60,6 +60,16 @@ profile:
           - key: $fc.type
             set: ['UDS']
 
+      ### MEDS
+      - match_type: "all"
+        match:
+          - key: $idkey
+            startswith: "MEDS"
+            case-sensitive: false
+        action:
+          - key: $fc.type
+            set: ['MEDS']
+
       ### FTLD
       - match_type: "all"
         match:
@@ -70,7 +80,6 @@ profile:
           - key: $fc.type
             set: ['FTLD']
 
-
       ### LBD
       - match_type: "all"
         match:
@@ -80,6 +89,26 @@ profile:
         action:
           - key: $fc.type
             set: [ 'LBD' ]
+
+      ### NP
+      - match_type: "all"
+        match:
+          - key: $idkey
+            startswith: "NP"
+            case-sensitive: false
+        action:
+          - key: $fc.type
+            set: [ 'NP' ]
+
+      ### Milestones
+      - match_type: "all"
+        match:
+          - key: $idkey
+            startswith: "MLST"
+            case-sensitive: false
+        action:
+          - key: $fc.type
+            set: [ 'MLST' ]
 
   - name: set_form_version
     description: set form version
@@ -122,4 +151,3 @@ profile:
         action:
           - key: $fc.Custom
             set: [ 'v4' ]
-
