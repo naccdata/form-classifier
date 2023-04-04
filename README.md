@@ -1,32 +1,23 @@
 <!-- markdownlint-disable code-block-style -->
-# File Classifier
-
-[[_TOC_]]
+# Form Classifier
 
 ## Overview
 
-The file classifier gear provides a gear interface to the
+The form classifier gear provides a gear interface to the
 [fw-classification](https://gitlab.com/flywheel-io/scientific-solutions/lib/fw-classification)
 toolkit and is essentially just a wrapper around fw-classification.
 
 For documentation on classification in general, please consult the
 [fw-classification documentation](https://flywheel-io.gitlab.io/scientific-solutions/lib/fw-classification/)
 
-The file classifier gear uses the file type of the provided input to determine
-the proper
-[adapter](https://flywheel-io.gitlab.io/scientific-solutions/lib/fw-classification/fw-classification/adapters/)
-to use.
-
 ## Supported file types
 
-Currently the gear supports classification of the following file types:
+Currently, the gear supports classification of the following file types:
 
-* `dicom`: via the `file.info.header.dicom` namespace which is populated using
-the
-[file-metadata-importer](https://gitlab.com/flywheel-io/flywheel-apps/file-metadata-importer)
+* `document` or `source code` of type JSON via the `file.info.header.form` namespace 
+which is populated using the 
+[form-importer](https://gitlab.com/flywheel-io/scientific-solutions/gears/form-importer)
 gear.
-* `nifti`: via a `json` sidecar which is found in the same container as the
-input.
 
 ## Usage
 
@@ -35,17 +26,16 @@ input.
 #### Metadata
 
 In general, since fw-classification acts on input metadata, the input file needs to have
-it's metadata populated before running file-classifier. The metadata can live in a few
+it's metadata populated before running form-classifier. The metadata can live in a few
 places depending on how the file will be classified.  The most common would be in the
-`file.info.header.<file-type>` which will be populated by `file-metadata-importer`.  But
-the metadata can also be in a separate file such as the `sidecar.json` for NIfTIs, or in
-the hierarchy such as acquisition label, file name, or custom information on any parent
-container.
+`file.info.header.<file-type>` which will be populated by `form-importer`.  But
+the metadata can also be in the hierarchy such as acquisition label, file name, or 
+custom information on any parent container.
 
 #### Profile
 
-file-classifier ships with [default
-profiles](https://gitlab.com/flywheel-io/scientific-solutions/lib/fw-classification-profiles/-/tree/main/profiles)
+form-classifier ships with [default
+profiles](./nacc_gear_form_classifier/classification_profiles)
 but the gear also accepts an input profile.  If you have custom needs beyond what is in
 the default profile, you will need to override the default profiles. See [Custom
 Classifications](#custom-classifications)
@@ -67,7 +57,7 @@ used to classify, therefore they get highest priority.
 ### Configuration
 
 * __debug__ (boolean, default False): Include debug statements in output.
-* __tag__ (str, default 'file-classifier'): String to tag the file after
+* __tag__ (str, default 'form-classifier'): String to tag the file after
 classification. Useful for gear-rule pipelines triggered by tags.
 
 ### Which profile will be used?
@@ -149,7 +139,7 @@ For example, adding the same `ProtocolName` block via the SDK:
 ```python
 import flywheel
 fw = flywheel.Client()
-proj = fw.get_project(<proj_id>) # or use lookup()
+proj = fw.get_project(<proj_id>)  # or use lookup()
 existing_info = proj.info
 # Initialize context classifications if they don't exist
 existing_info.setdefault('classifications', [])

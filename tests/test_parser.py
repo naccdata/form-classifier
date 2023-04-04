@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from fw_gear_file_classifier.parser import parse_config
+from nacc_gear_form_classifier.parser import parse_config
 
 
 @pytest.fixture
@@ -18,7 +18,7 @@ def default_response(api, context_with_key):
 
 
 def test_parse_config_basic(mocker, default_response):
-    profile_mock = mocker.patch("fw_gear_file_classifier.parser.Profile")
+    profile_mock = mocker.patch("nacc_gear_form_classifier.parser.Profile")
     gc, _ = default_response
     gc.get_input_path.return_value = None
     _, profile = parse_config(gc)
@@ -26,16 +26,18 @@ def test_parse_config_basic(mocker, default_response):
     assert get_input_args[0].args == ("file-input",)
     profile_mock.assert_called_once_with(
         Path(__file__).parents[1]
-        / "fw_gear_file_classifier/classification_profiles/main.yml"
+        / "nacc_gear_form_classifier/classification_profiles/main.yml"
     )
     assert profile == profile_mock.return_value
 
 
 def test_parse_config_custom_profile(mocker, default_response):
-    profile_mock = mocker.patch("fw_gear_file_classifier.parser.Profile")
+    profile_mock = mocker.patch("nacc_gear_form_classifier.parser.Profile")
     gc, _ = default_response
     _ = parse_config(gc)
-    path = Path(__file__).parents[1] / "fw_gear_file_classifier/classification_profiles"
+    path = (
+        Path(__file__).parents[1] / "nacc_gear_form_classifier/classification_profiles"
+    )
     profile_mock.assert_called_once_with(
         gc.get_input_path.return_value, include_search_dirs=[path]
     )
@@ -87,7 +89,7 @@ def test_parse_config_custom_block(
     api.add_response(
         "/api/projects/1", {"label": "test", "info": {"classifications": block_raw}}
     )
-    profile_mock = mocker.patch("fw_gear_file_classifier.parser.Profile")
+    profile_mock = mocker.patch("nacc_gear_form_classifier.parser.Profile")
     _ = parse_config(context_with_key)
     if err:
         assert caplog.record_tuples[-1][1] == 30

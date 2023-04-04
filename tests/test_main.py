@@ -3,14 +3,14 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from fw_gear_file_classifier.main import classify
+from nacc_gear_form_classifier.main import classify
 
 
 @pytest.mark.parametrize(
     "to_mock, file_type",
     [
-        ("fw_gear_file_classifier.main.NiftiFWAdapter", "nifti"),
-        ("fw_gear_file_classifier.main.FWAdapter", "dicom"),
+        ("nacc_gear_form_classifier.main.NiftiFWAdapter", "nifti"),
+        ("nacc_gear_form_classifier.main.FWAdapter", "dicom"),
     ],
 )
 def test_classify_nifti(mocker, to_mock, file_type):
