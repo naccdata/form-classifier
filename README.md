@@ -29,14 +29,13 @@ In general, since fw-classification acts on input metadata, the input file needs
 it's metadata populated before running form-classifier. The metadata can live in a few
 places depending on how the file will be classified.  The most common would be in the
 `file.info.header.<file-type>` which will be populated by `form-importer`.  But
-the metadata can also be in a separate file such as the `sidecar.json` for NIfTIs, or in
-the hierarchy such as acquisition label, file name, or custom information on any parent
-container.
+the metadata can also be in the hierarchy such as acquisition label, file name, or 
+custom information on any parent container.
 
 #### Profile
 
 form-classifier ships with [default
-profiles](https://gitlab.com/flywheel-io/scientific-solutions/lib/fw-classification-profiles/-/tree/main/profiles)
+profiles](./nacc_gear_form_classifier/classification_profiles)
 but the gear also accepts an input profile.  If you have custom needs beyond what is in
 the default profile, you will need to override the default profiles. See [Custom
 Classifications](#custom-classifications)
