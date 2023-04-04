@@ -16,20 +16,7 @@ After cloning the repo:
 
 ### Classification profiles
 
-Classification profiles are stored in a separate repo
-[classification-profiles](https://gitlab.com/flywheel-io/public/classification-profiles).
-
-This repo is stored as a git submodule at path
-`fw_gear_file_classifier/classification-profiles`.
-
-Ater cloning this repo you will need to first init the submodule, and then
-update to the current version:
-
-* `git submodule init`
-* `git submodule update --recursive`
-
-Classification profiles will automatically be updated in this repo when they are changed
-in the upstream repo, see [Releases](#releases) for more information.
+Classification profiles are stored in `fw_gear_file_classifier/classification-profiles`
 
 ## Dependency management
 
@@ -42,8 +29,8 @@ Dependencies are listed in the `pyproject.toml` file.
 
 #### Managing dependencies
 
-* Adding: Use `poetry add [--dev] <dep>`
-* Removing: Use `poetry remove [--dev] <dep>`
+* Adding: Use `poetry add [--group dev] <dep>`
+* Removing: Use `poetry remove [--group dev] <dep>`
 * Updating: Use `poetry update <dep>` or `poetry update` to update all deps.
   * Can also not update development dependencies with `--no-dev`
   * Update dry run: `--dry-run`
@@ -89,14 +76,6 @@ Local linting and testing scripts are managed through
 
 ## Adding a contribution
 
-Every contribution should be associated with a ticket on the GEAR JIRA board,
-or be a hotfix.  You should contribute by creating a branch titled with
-either `hotfix-<hotfix_name` or `GEAR-<gear_num>-<description>`.  For now,
-other branch names will be accepted, but soon branch names will be rejected if
-they don't follow this pattern.
-
-When contributing, make a Merge Request against the main branch.
-
 ### Merge requests
 
 The merge request should contain at least two things:
@@ -125,14 +104,3 @@ BUG:
 ```
 
 Where the rest of the file contains release notes for previous versions.
-
-### Releases
-
-See
-[Creating a release in qa-ci](https://gitlab.com/flywheel-io/tools/etc/qa-ci#creating-a-release)
-
-This repo has an added job to update profiles when there is an upstream change.  A
-publish job on
-[classification-profiles](https://gitlab.com/flywheel-io/public/classification-profiles)
-triggers the `update:profiles` job in this repo, which creates an MR with the profiles
-submodule checked out to the published version of classification-profiles.
