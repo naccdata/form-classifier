@@ -75,7 +75,7 @@
   "license": "MIT",
   "maintainer": "Flywheel <support@flywheel.io>",
   "name": "form-classifier-nacc",
-  "source": "https://github.com/naccdata/file-classifier.git",
-  "url": "https://github.com/naccdata/file-classifier.git",
+  "source": "https://github.com/naccdata/form-classifier.git",
+  "url": "https://github.com/naccdata/form-classifier.git",
   "version": "0.0.1"
 }

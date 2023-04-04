@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "fw-gear-file-classifier"
+name = "nacc-gear-form-classifier"
 version = "0.5.1"
 description = "Generic File Classifier"
 authors = ["Flywheel <support@flywheel.io>"]
@@ -10,7 +10,7 @@ keywords = [
     "Gears",
     "Classification"
 ]
-repository = "https://gitlab.com/flywheel-io/flywheel-apps/file-classifier.git"
+repository = "https://github.com/naccdata/form-classifier"
 classifiers = [
     "Topic :: Scientific/Engineering"
 ]
