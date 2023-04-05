@@ -2,7 +2,7 @@
 **
 
 # Except package dir, run.py, poetry files, and README
-!fw_gear_file_classifier
+!nacc_gear_form_classifier
 !poetry.lock
 !pyproject.toml
 !run.py
