@@ -17,7 +17,7 @@ default_profiles = (Path(__file__).parents[0] / "classification_profiles").resol
 
 def parse_config(
     gear_context: GearToolkitContext,
-) -> Tuple[Dict[str, Any], Profile]:  # File input  # Profile to classify with
+) -> Tuple[Dict[str, Any], Profile, bool]:  # File input  # Profile to classify with
     """Parse options from gear config.
 
     Args:
@@ -30,6 +30,7 @@ def parse_config(
                 classification-toolkits "main.yml"
     """
     file_input: Dict[str, Any] = gear_context.get_input("file-input")
+    validate = gear_context.config["validate"]
     # Get optional custom profile from input
     profile_path: Optional[Path] = gear_context.get_input_path("profile")
     if profile_path:
@@ -66,7 +67,7 @@ def parse_config(
                 "Could not handle context classification " f"{classify_context}"
             )
 
-    return file_input, profile
+    return file_input, profile, validate
 
 
 def get_parent(file_input: dict, context: GearToolkitContext):

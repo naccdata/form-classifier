@@ -1,13 +1,13 @@
 repos:
   - repo: https://gitlab.com/flywheel-io/tools/etc/qa-ci
-    rev: d7b0f917c9a5e07dcc27c7787b51ec9e4f095636
+    rev: c36806cde04141d414cbd28d50255e93b41e0f9d
     hooks:
-      - id: test:flywheel-lint
-      - id: test:helm-check
-      - id: test:pre-commit:isort
-      - id: test:pre-commit:mypy
-      - id: test:pre-commit:pylint
-      - id: test:pre-commit:pylint-tests
-      - id: test:pre-commit:pytest
-      - id: publish:docker:test
-
+      - id: gearcheck
+        always_run: true
+      - id: poetry_export
+      - id: docker_build
+      - id: markdownlint
+      - id: yamllint
+      - id: black
+      - id: isort
+      - id: pytest

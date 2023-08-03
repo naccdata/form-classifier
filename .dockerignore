@@ -2,12 +2,13 @@
 **
 
 # Except package dir, run.py, poetry files, and README
-!fw_gear_file_classifier
-!poetry.lock
 !pyproject.toml
 !run.py
-!README.md
 !manifest.json
+!fw_gear_file_classifier
+!README.md
+!requirements.txt
+
 
 # Re-ignore pycache which might be inside package dir
 **/__pycache__
