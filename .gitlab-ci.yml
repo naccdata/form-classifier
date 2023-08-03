@@ -1,7 +1,15 @@
 include:
-  - project: flywheel-io/tools/etc/qa-ci
-    ref: d7b0f917c9a5e07dcc27c7787b51ec9e4f095636
-    file: ci/gears.yml
+  - project: flywheel-io/scientific-solutions/etc/sse-qa-ci
+    ref: ed5c2741e40b85bb00cf28572eab4c34c31dc5d3
+    file: ci/default.yml
+
+variables:
+  PYTEST_COV_FAIL_UNDER: 90
+  DEBUG: "3"  # Set debug mode to print out executed command on qa-ci
+  PUBLISH_POETRY: "true"  # Set to true to allow CI to publish package to PYPI
+  CACHE_CLEAR: "1"  # Set to true to clear runner cache on gitlab CI
+  PYVER: "3.10"
+
 
 update:profiles:
   stage: update
