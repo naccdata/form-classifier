@@ -81,7 +81,7 @@
   "license": "MIT",
   "maintainer": "Flywheel <support@flywheel.io>",
   "name": "file-classifier",
-  "source": "https://gitlab.com/flywheel-io/flywheel-apps/file-classifier.git",
-  "url": "https://gitlab.com/flywheel-io/flywheel-apps/file-classifier.git",
+  "source": "https://gitlab.com/flywheel-io/scientific-solutions/gears/file-classifier.git",
+  "url": "https://gitlab.com/flywheel-io/scientific-solutions/gears/file-classifier.git",
   "version": "0.6.0"
 }
