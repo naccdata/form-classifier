@@ -5,11 +5,10 @@ include:
 
 variables:
   PYTEST_COV_FAIL_UNDER: 90
-  DEBUG: "3"  # Set debug mode to print out executed command on qa-ci
-  PUBLISH_POETRY: "true"  # Set to true to allow CI to publish package to PYPI
-  CACHE_CLEAR: "1"  # Set to true to clear runner cache on gitlab CI
+  DEBUG: "3" # Set debug mode to print out executed command on qa-ci
+  PUBLISH_POETRY: "true" # Set to true to allow CI to publish package to PYPI
+  CACHE_CLEAR: "1" # Set to true to clear runner cache on gitlab CI
   PYVER: "3.10"
-
 
 update:profiles:
   stage: update
@@ -18,5 +17,6 @@ update:profiles:
       when: always
   script:
     - sed -i "s|PROFILE_VERSION=.*|PROFILE_VERSION=$UPSTREAM_TAG|" Dockerfile
-    - /ci/create_mr.sh update-profiles $CI_COMMIT_BRANCH
+    - /qa-ci/scripts/run.sh git_login
+    - /qa-ci/scripts/run.sh git_mr update-profiles $CI_COMMIT_BRANCH
       title="Update classification profile to $UPSTREAM_TAG"
