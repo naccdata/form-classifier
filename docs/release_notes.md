@@ -1,5 +1,20 @@
 # Release notes
 
+## 0.6.1
+
+__Maintenance__:
+
+* Update classification-profiles to 0.3.1 to fix contrast key issue.
+* Fix pipeline
+* Update url and source link
+
+## 0.6.0
+
+__Enhancement__:
+
+* Adding config option to validate the UI schema
+* Update classification profile to 0.3.0 to enable PT classification
+
 ## 0.5.1
 
 __Enhancement__:
