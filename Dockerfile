@@ -1,6 +1,6 @@
 FROM alpine/git:v2.36.1 as profiles
 
-ENV PROFILE_VERSION=0.3.1
+ENV PROFILE_VERSION=0.3.2
 
 RUN git clone --depth 1 \
     --branch $PROFILE_VERSION \
