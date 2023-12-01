@@ -7,7 +7,10 @@ from flywheel_gear_toolkit import GearToolkitContext
 
 from fw_gear_file_classifier.main import classify
 from fw_gear_file_classifier.parser import parse_config
-from fw_gear_file_classifier.utils import validate_modality_schema
+from fw_gear_file_classifier.utils import (
+    clear_file_classification,
+    validate_modality_schema,
+)
 
 log = logging.getLogger(__name__)
 
@@ -15,8 +18,11 @@ log = logging.getLogger(__name__)
 def main(context: GearToolkitContext) -> None:  # pragma: no cover
     """Parse config and run."""
     # Parse config
-    file_input, profile, validate = parse_config(context)
+    file_input, profile, validate, remove_existing = parse_config(context)
     client = context.client
+
+    if remove_existing:
+        clear_file_classification(context)
 
     if validate:
         validate_modality_schema(client, file_input["object"])
