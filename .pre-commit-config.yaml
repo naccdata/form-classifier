@@ -1,39 +1,13 @@
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: main
+  - repo: https://gitlab.com/flywheel-io/tools/etc/qa-ci
+    rev: c36806cde04141d414cbd28d50255e93b41e0f9d
     hooks:
-      - id: check-json
-      - id: check-toml
-      - id: check-yaml
-
-  - repo: local
-    hooks:
+      - id: gearcheck
+        always_run: true
+      - id: poetry_export
+      - id: docker_build
+      - id: markdownlint
+      - id: yamllint
       - id: black
-        name: black
-        language: system
-        entry: poetry run black
-        types: [python]
       - id: isort
-        name: isort
-        language: system
-        entry: poetry run isort --profile black .
-        types: [python]
       - id: pytest
-        name: pytest
-        language: system
-        # The entrypoint source .env if present which contains env var used by pytest entry
-        entry: poetry run bash -euo pipefail -c
-          "
-          [ ! -f .env ] || . .env;
-          pytest tests
-            --color=yes
-            --cov=$(poetry version | cut -d' ' -f1 | tr - _)
-            --cov-fail-under=${COVER:=90}
-            --cov-report=term-missing
-            --cov-report=xml:coverage.xml
-            --junitxml=junit.xml
-            -o junit_family=xunit2
-          "
-        types: [python]
-        pass_filenames: false
-        verbose: true

@@ -1,6 +1,6 @@
 [[package]]
 name = "astroid"
-version = "2.15.2"
+version = "2.15.6"
 description = "An abstract syntax tree for Python with inference support."
 category = "dev"
 optional = false
@@ -15,20 +15,27 @@ wrapt = [
 ]
 
 [[package]]
+name = "atomicwrites"
+version = "1.4.1"
+description = "Atomic file writes."
+category = "dev"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
+
+[[package]]
 name = "attrs"
-version = "22.2.0"
+version = "23.1.0"
 description = "Classes Without Boilerplate"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 
 [package.extras]
-cov = ["attrs", "coverage-enable-subprocess", "coverage[toml] (>=5.3)"]
-dev = ["attrs"]
-docs = ["furo", "sphinx", "myst-parser", "zope.interface", "sphinx-notfound-page", "sphinxcontrib-towncrier", "towncrier"]
-tests = ["attrs", "zope.interface"]
-tests-no-zope = ["hypothesis", "pympler", "pytest (>=4.3.0)", "pytest-xdist", "cloudpickle", "mypy (>=0.971,<0.990)", "pytest-mypy-plugins"]
-tests_no_zope = ["hypothesis", "pympler", "pytest (>=4.3.0)", "pytest-xdist", "cloudpickle", "mypy (>=0.971,<0.990)", "pytest-mypy-plugins"]
+cov = ["attrs", "coverage[toml] (>=5.3)"]
+dev = ["attrs", "pre-commit"]
+docs = ["furo", "myst-parser", "sphinx", "sphinx-notfound-page", "sphinxcontrib-towncrier", "towncrier", "zope-interface"]
+tests = ["attrs", "zope-interface"]
+tests-no-zope = ["cloudpickle", "hypothesis", "mypy (>=1.1.1)", "pympler", "pytest-mypy-plugins", "pytest-xdist", "pytest (>=4.3.0)"]
 
 [[package]]
 name = "backoff"
@@ -62,7 +69,7 @@ uvloop = ["uvloop (>=0.15.2)"]
 
 [[package]]
 name = "certifi"
-version = "2022.12.7"
+version = "2023.5.7"
 description = "Python package for providing Mozilla's CA Bundle."
 category = "main"
 optional = false
@@ -78,7 +85,7 @@ python-versions = ">=3.6.1"
 
 [[package]]
 name = "charset-normalizer"
-version = "3.1.0"
+version = "3.2.0"
 description = "The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet."
 category = "main"
 optional = false
@@ -86,7 +93,7 @@ python-versions = ">=3.7.0"
 
 [[package]]
 name = "click"
-version = "8.1.3"
+version = "8.1.6"
 description = "Composable command line interface toolkit"
 category = "main"
 optional = false
@@ -105,7 +112,7 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*,>=2.7
 
 [[package]]
 name = "coverage"
-version = "7.2.2"
+version = "7.2.7"
 description = "Code coverage measurement for Python"
 category = "dev"
 optional = false
@@ -141,7 +148,7 @@ graph = ["objgraph (>=1.7.2)"]
 
 [[package]]
 name = "distlib"
-version = "0.3.6"
+version = "0.3.7"
 description = "Distribution utilities"
 category = "dev"
 optional = false
@@ -156,27 +163,16 @@ optional = false
 python-versions = ">=3.5,<4.0"
 
 [[package]]
-name = "exceptiongroup"
-version = "1.1.1"
-description = "Backport of PEP 654 (exception groups)"
-category = "dev"
-optional = false
-python-versions = ">=3.7"
-
-[package.extras]
-test = ["pytest (>=6)"]
-
-[[package]]
 name = "filelock"
-version = "3.10.7"
+version = "3.12.2"
 description = "A platform independent file lock."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 
 [package.extras]
-docs = ["furo (>=2022.12.7)", "sphinx-autodoc-typehints (>=1.22,!=1.23.4)", "sphinx (>=6.1.3)"]
-testing = ["covdefaults (>=2.3)", "coverage (>=7.2.2)", "diff-cover (>=7.5)", "pytest-cov (>=4)", "pytest-mock (>=3.10)", "pytest-timeout (>=2.1)", "pytest (>=7.2.2)"]
+docs = ["furo (>=2023.5.20)", "sphinx-autodoc-typehints (>=1.23,!=1.23.4)", "sphinx (>=7.0.1)"]
+testing = ["covdefaults (>=2.3)", "coverage (>=7.2.7)", "diff-cover (>=7.5)", "pytest-cov (>=4.1)", "pytest-mock (>=3.10)", "pytest-timeout (>=2.1)", "pytest (>=7.3.1)"]
 
 [[package]]
 name = "flask"
@@ -234,7 +230,7 @@ rfc3987 = ">=1.3.7"
 
 [[package]]
 name = "flywheel-sdk"
-version = "16.16.7"
+version = "16.19.2"
 description = "Flywheel SDK"
 category = "main"
 optional = false
@@ -351,7 +347,7 @@ pydantic = ">=1.7.3,<2.0.0"
 
 [[package]]
 name = "fw-utils"
-version = "4.2.7"
+version = "4.3.4"
 description = "Common Flywheel helper utilities."
 category = "main"
 optional = false
@@ -359,16 +355,16 @@ python-versions = ">=3.8,<4.0"
 
 [package.dependencies]
 python-dateutil = ">=2.8.2,<3.0.0"
-tzdata = ">=2022,<2023"
+tzdata = ">=2022"
 tzlocal = ">=4.1,<5.0"
 
 [[package]]
 name = "identify"
-version = "2.5.22"
+version = "2.5.25"
 description = "File identification library for Python"
 category = "dev"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 
 [package.extras]
 license = ["ukkonen"]
@@ -383,11 +379,11 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "importlib-metadata"
-version = "6.1.0"
+version = "6.8.0"
 description = "Read metadata from Python packages"
 category = "dev"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 
 [package.dependencies]
 zipp = ">=0.5"
@@ -395,7 +391,7 @@ zipp = ">=0.5"
 [package.extras]
 docs = ["sphinx (>=3.5)", "jaraco.packaging (>=9)", "rst.linker (>=1.9)", "furo", "sphinx-lint", "jaraco.tidelift (>=1.4)"]
 perf = ["ipython"]
-testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-cov", "pytest-enabler (>=1.3)", "packaging", "pyfakefs", "flufl.flake8", "pytest-perf (>=0.9.2)", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "pytest-flake8", "importlib-resources (>=1.3)"]
+testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-ruff", "packaging", "pyfakefs", "flufl.flake8", "pytest-perf (>=0.9.2)", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "importlib-resources (>=1.3)"]
 
 [[package]]
 name = "iniconfig"
@@ -468,7 +464,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "markupsafe"
-version = "2.1.2"
+version = "2.1.3"
 description = "Safely add untrusted strings to HTML/XML markup."
 category = "dev"
 optional = false
@@ -500,7 +496,7 @@ python-versions = ">=3.5"
 
 [[package]]
 name = "natsort"
-version = "8.3.1"
+version = "8.4.0"
 description = "Simple yet flexible natural sorting in Python."
 category = "main"
 optional = false
@@ -535,7 +531,7 @@ test = ["coverage", "pytest (!=5.3.4)", "pytest-cov", "pytest-doctestplus (!=0.9
 
 [[package]]
 name = "nodeenv"
-version = "1.7.0"
+version = "1.8.0"
 description = "Node.js virtual environment builder"
 category = "dev"
 optional = false
@@ -543,11 +539,11 @@ python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,!=3.5.*,!=3.6.*
 
 [[package]]
 name = "numpy"
-version = "1.24.2"
+version = "1.25.1"
 description = "Fundamental package for array computing in Python"
 category = "main"
 optional = false
-python-versions = ">=3.8"
+python-versions = ">=3.9"
 
 [[package]]
 name = "packaging"
@@ -581,23 +577,23 @@ test = ["allpairspy", "click", "faker", "pytest (>=6.0.1)", "pytest-discord (>=0
 
 [[package]]
 name = "platformdirs"
-version = "3.2.0"
+version = "3.9.1"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
 category = "dev"
 optional = false
 python-versions = ">=3.7"
 
 [package.extras]
-docs = ["furo (>=2022.12.7)", "proselint (>=0.13)", "sphinx-autodoc-typehints (>=1.22,!=1.23.4)", "sphinx (>=6.1.3)"]
-test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest-cov (>=4)", "pytest-mock (>=3.10)", "pytest (>=7.2.2)"]
+docs = ["furo (>=2023.5.20)", "proselint (>=0.13)", "sphinx-autodoc-typehints (>=1.23,!=1.23.4)", "sphinx (>=7.0.1)"]
+test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest-cov (>=4.1)", "pytest-mock (>=3.10)", "pytest (>=7.3.1)"]
 
 [[package]]
 name = "pluggy"
-version = "1.0.0"
+version = "1.2.0"
 description = "plugin and hook calling mechanisms for python"
 category = "dev"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 
 [package.extras]
 dev = ["pre-commit", "tox"]
@@ -605,7 +601,7 @@ testing = ["pytest", "pytest-benchmark"]
 
 [[package]]
 name = "pre-commit"
-version = "3.2.2"
+version = "2.21.0"
 description = "A framework for managing and maintaining multi-language pre-commit hooks."
 category = "dev"
 optional = false
@@ -619,8 +615,16 @@ pyyaml = ">=5.1"
 virtualenv = ">=20.10.0"
 
 [[package]]
+name = "py"
+version = "1.11.0"
+description = "library with cross-python path, ini-parsing, io, code, log facilities"
+category = "dev"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
+
+[[package]]
 name = "pydantic"
-version = "1.10.7"
+version = "1.10.11"
 description = "Data validation and settings management using python type hints"
 category = "main"
 optional = false
@@ -635,25 +639,25 @@ email = ["email-validator (>=1.0.3)"]
 
 [[package]]
 name = "pydicom"
-version = "2.3.1"
+version = "2.4.1"
 description = "A pure Python package for reading and writing DICOM data"
 category = "main"
 optional = false
-python-versions = ">=3.6.1"
+python-versions = ">=3.7"
 
 [package.extras]
 docs = ["numpy", "numpydoc", "matplotlib", "pillow", "sphinx", "sphinx-rtd-theme", "sphinx-gallery", "sphinxcontrib-napoleon", "sphinx-copybutton"]
 
 [[package]]
 name = "pylint"
-version = "2.17.2"
+version = "2.17.4"
 description = "python code static checker"
 category = "dev"
 optional = false
 python-versions = ">=3.7.2"
 
 [package.dependencies]
-astroid = ">=2.15.2,<=2.17.0-dev0"
+astroid = ">=2.15.4,<=2.17.0-dev0"
 colorama = {version = ">=0.4.5", markers = "sys_platform == \"win32\""}
 dill = [
     {version = ">=0.2", markers = "python_version < \"3.11\""},
@@ -672,7 +676,7 @@ testutils = ["gitpython (>3)"]
 
 [[package]]
 name = "pyparsing"
-version = "3.0.9"
+version = "3.1.0"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
 category = "main"
 optional = false
@@ -726,7 +730,7 @@ testing = ["fields", "hunter", "process-tests", "six", "pytest-xdist", "virtuale
 
 [[package]]
 name = "pytest-mock"
-version = "3.10.0"
+version = "3.11.1"
 description = "Thin-wrapper around the mock package for easier use with pytest"
 category = "dev"
 optional = false
@@ -762,7 +766,7 @@ tzdata = {version = "*", markers = "python_version >= \"3.6\""}
 
 [[package]]
 name = "pyyaml"
-version = "6.0"
+version = "6.0.1"
 description = "YAML parser and emitter for Python"
 category = "main"
 optional = false
@@ -770,17 +774,17 @@ python-versions = ">=3.6"
 
 [[package]]
 name = "requests"
-version = "2.28.2"
+version = "2.31.0"
 description = "Python HTTP for Humans."
 category = "main"
 optional = false
-python-versions = ">=3.7, <4"
+python-versions = ">=3.7"
 
 [package.dependencies]
 certifi = ">=2017.4.17"
 charset-normalizer = ">=2,<4"
 idna = ">=2.5,<4"
-urllib3 = ">=1.21.1,<1.27"
+urllib3 = ">=1.21.1,<3"
 
 [package.extras]
 socks = ["PySocks (>=1.5.6,!=1.5.7)"]
@@ -788,7 +792,7 @@ use_chardet_on_py3 = ["chardet (>=3.0.2,<6)"]
 
 [[package]]
 name = "requests-toolbelt"
-version = "0.10.1"
+version = "1.0.0"
 description = "A utility belt for advanced users of python-requests"
 category = "main"
 optional = false
@@ -807,14 +811,14 @@ python-versions = "*"
 
 [[package]]
 name = "ruamel.yaml"
-version = "0.17.21"
+version = "0.17.32"
 description = "ruamel.yaml is a YAML parser/emitter that supports roundtrip preservation of comments, seq/map flow style, and map key order"
 category = "main"
 optional = false
 python-versions = ">=3"
 
 [package.dependencies]
-"ruamel.yaml.clib" = {version = ">=0.2.6", markers = "platform_python_implementation == \"CPython\" and python_version < \"3.11\""}
+"ruamel.yaml.clib" = {version = ">=0.2.7", markers = "platform_python_implementation == \"CPython\" and python_version < \"3.12\""}
 
 [package.extras]
 docs = ["ryd"]
@@ -846,7 +850,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "tomlkit"
-version = "0.11.7"
+version = "0.11.8"
 description = "Style preserving TOML library"
 category = "dev"
 optional = false
@@ -871,7 +875,7 @@ test = ["shellingham (>=1.3.0,<2.0.0)", "pytest (>=4.4.0,<5.4.0)", "pytest-cov (
 
 [[package]]
 name = "typing-extensions"
-version = "4.5.0"
+version = "4.7.1"
 description = "Backported and Experimental Type Hints for Python 3.7+"
 category = "main"
 optional = false
@@ -879,7 +883,7 @@ python-versions = ">=3.7"
 
 [[package]]
 name = "tzdata"
-version = "2022.7"
+version = "2023.3"
 description = "Provider of IANA time zone data"
 category = "main"
 optional = false
@@ -887,7 +891,7 @@ python-versions = ">=2"
 
 [[package]]
 name = "tzlocal"
-version = "4.3"
+version = "4.3.1"
 description = "tzinfo object for the local timezone"
 category = "main"
 optional = false
@@ -902,39 +906,9 @@ devenv = ["black", "check-manifest", "flake8", "pyroma", "pytest-cov", "pytest-m
 
 [[package]]
 name = "urllib3"
-version = "1.26.15"
+version = "2.0.4"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 category = "main"
-optional = false
-python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, !=3.5.*"
-
-[package.extras]
-brotli = ["brotlicffi (>=0.8.0)", "brotli (>=1.0.9)", "brotlipy (>=0.6.0)"]
-secure = ["pyOpenSSL (>=0.14)", "cryptography (>=1.3.4)", "idna (>=2.0.0)", "certifi", "urllib3-secure-extra", "ipaddress"]
-socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
-
-[[package]]
-name = "virtualenv"
-version = "20.21.0"
-description = "Virtual Python Environment builder"
-category = "dev"
-optional = false
-python-versions = ">=3.7"
-
-[package.dependencies]
-distlib = ">=0.3.6,<1"
-filelock = ">=3.4.1,<4"
-platformdirs = ">=2.4,<4"
-
-[package.extras]
-docs = ["furo (>=2022.12.7)", "proselint (>=0.13)", "sphinx-argparse (>=0.4)", "sphinx (>=6.1.3)", "sphinxcontrib-towncrier (>=0.2.1a0)", "towncrier (>=22.12)"]
-test = ["covdefaults (>=2.2.2)", "coverage-enable-subprocess (>=1)", "coverage (>=7.1)", "flaky (>=3.7)", "packaging (>=23)", "pytest-env (>=0.8.1)", "pytest-freezegun (>=0.4.2)", "pytest-mock (>=3.10)", "pytest-randomly (>=3.12)", "pytest-timeout (>=2.1)", "pytest (>=7.2.1)"]
-
-[[package]]
-name = "werkzeug"
-version = "2.2.3"
-description = "The comprehensive WSGI web application library."
-category = "dev"
 optional = false
 python-versions = ">=3.7"
 
@@ -942,7 +916,41 @@ python-versions = ">=3.7"
 MarkupSafe = ">=2.1.1"
 
 [package.extras]
-watchdog = ["watchdog"]
+brotli = ["brotli (>=1.0.9)", "brotlicffi (>=0.8.0)"]
+secure = ["certifi", "cryptography (>=1.9)", "idna (>=2.0.0)", "pyopenssl (>=17.1.0)", "urllib3-secure-extra"]
+socks = ["pysocks (>=1.5.6,!=1.5.7,<2.0)"]
+zstd = ["zstandard (>=0.18.0)"]
+
+[[package]]
+name = "virtualenv"
+version = "20.24.1"
+description = "Virtual Python Environment builder"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+distlib = ">=0.3.6,<1"
+filelock = ">=3.12,<4"
+platformdirs = ">=3.5.1,<4"
+
+[package.extras]
+docs = ["furo (>=2023.5.20)", "proselint (>=0.13)", "sphinx-argparse (>=0.4)", "sphinx (>=7.0.1)", "sphinxcontrib-towncrier (>=0.2.1a0)", "towncrier (>=23.6)"]
+test = ["covdefaults (>=2.3)", "coverage-enable-subprocess (>=1)", "coverage (>=7.2.7)", "flaky (>=3.7)", "packaging (>=23.1)", "pytest-env (>=0.8.1)", "pytest-freezer (>=0.4.6)", "pytest-mock (>=3.10)", "pytest-randomly (>=3.12)", "pytest-timeout (>=2.1)", "pytest (>=7.3.1)", "setuptools (>=67.8)", "time-machine (>=2.9)"]
+
+[[package]]
+name = "werkzeug"
+version = "2.3.6"
+description = "The comprehensive WSGI web application library."
+category = "dev"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+MarkupSafe = ">=2.1.1"
+
+[package.extras]
+watchdog = ["watchdog (>=2.3)"]
 
 [[package]]
 name = "wrapt"
@@ -954,15 +962,15 @@ python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*,>=2.7"
 
 [[package]]
 name = "zipp"
-version = "3.15.0"
+version = "3.16.2"
 description = "Backport of pathlib-compatible object wrapper for zip files"
 category = "dev"
 optional = false
-python-versions = ">=3.7"
+python-versions = ">=3.8"
 
 [package.extras]
-docs = ["sphinx (>=3.5)", "jaraco.packaging (>=9)", "rst.linker (>=1.9)", "furo", "sphinx-lint", "jaraco.tidelift (>=1.4)"]
-testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "flake8 (<5)", "pytest-cov", "pytest-enabler (>=1.3)", "jaraco.itertools", "jaraco.functools", "more-itertools", "big-o", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)", "pytest-flake8"]
+docs = ["sphinx (>=3.5)", "jaraco.packaging (>=9.3)", "rst.linker (>=1.9)", "furo", "sphinx-lint", "jaraco.tidelift (>=1.4)"]
+testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-cov", "pytest-enabler (>=2.2)", "pytest-ruff", "jaraco.itertools", "jaraco.functools", "more-itertools", "big-o", "pytest-ignore-flaky", "pytest-black (>=0.3.7)", "pytest-mypy (>=0.9.1)"]
 
 [metadata]
 lock-version = "1.1"
@@ -971,9 +979,9 @@ content-hash = "a4614750db30ad08d2b56473ef6a0984de7419f45056ebf8f25fc8c090005a31
 
 [metadata.files]
 astroid = []
+atomicwrites = []
 attrs = []
 backoff = []
-black = []
 certifi = []
 cfgv = []
 charset-normalizer = []
@@ -984,7 +992,6 @@ dicom-validator = []
 dill = []
 distlib = []
 dotty-dict = []
-exceptiongroup = []
 filelock = []
 flask = []
 flywheel-gear-toolkit = []
@@ -1009,17 +1016,18 @@ lazy-object-proxy = []
 markupsafe = []
 mccabe = []
 memoization = []
+mypy = []
 mypy-extensions = []
 natsort = []
 nibabel = []
 nodeenv = []
 numpy = []
 packaging = []
-pathspec = []
 pathvalidate = []
 platformdirs = []
 pluggy = []
 pre-commit = []
+py = []
 pydantic = []
 pydicom = []
 pylint = []
@@ -1037,6 +1045,7 @@ rfc3987 = []
 "ruamel.yaml" = []
 "ruamel.yaml.clib" = []
 six = []
+toml = []
 tomli = []
 tomlkit = []
 typer = []

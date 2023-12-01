@@ -12,6 +12,7 @@ def default_response(api, context_with_key):
     context_with_key.get_input.return_value = {
         "hierarchy": {"type": "acquisition", "id": 1}
     }
+    context_with_key.config = {"validate": True, "remove_existing": False}
     api.add_response("/api/acquisitions/1", {"parents": {"project": 1}})
     api.add_response("/api/projects/1", {"info": {}, "label": "test"})
     return context_with_key, api
@@ -21,7 +22,7 @@ def test_parse_config_basic(mocker, default_response):
     profile_mock = mocker.patch("nacc_gear_form_classifier.parser.Profile")
     gc, _ = default_response
     gc.get_input_path.return_value = None
-    _, profile = parse_config(gc)
+    _, profile, validate, remove_existing = parse_config(gc)
     get_input_args = gc.get_input.call_args_list
     assert get_input_args[0].args == ("file-input",)
     profile_mock.assert_called_once_with(
@@ -29,6 +30,8 @@ def test_parse_config_basic(mocker, default_response):
         / "nacc_gear_form_classifier/classification_profiles/main.yml"
     )
     assert profile == profile_mock.return_value
+    assert validate is True
+    assert remove_existing is False
 
 
 def test_parse_config_custom_profile(mocker, default_response):
