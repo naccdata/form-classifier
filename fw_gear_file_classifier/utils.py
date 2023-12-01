@@ -6,10 +6,19 @@ from typing import Any, Dict
 
 import flywheel
 import yaml
+from flywheel_gear_toolkit import GearToolkitContext
 
 log = logging.getLogger("root")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 default_profiles = (Path(__file__).parents[0] / "classification_profiles").resolve()
+
+
+def clear_file_classification(context: GearToolkitContext):
+    """Clear current file classification information"""
+    log.info("Clearing original classification.")
+
+    # Update the snapshot object metadata to match the file on the instance.
+    context.get_input_file_object("file-input")["classification"] = {}
 
 
 def get_schema_definition(profile_path: Path) -> Dict:

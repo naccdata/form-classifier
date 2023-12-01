@@ -8,6 +8,11 @@
       "description": "Log debug messages",
       "type": "boolean"
     },
+    "remove_existing": {
+      "default": false,
+      "description": "Clear existing classification.",
+      "type": "boolean"
+    },
     "tag": {
       "default": "file-classifier",
       "description": "The tag to be added on input file upon run completion.",
