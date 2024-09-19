@@ -40,13 +40,162 @@ profile:
           - key: $idkey
             exists: true
 
+  - name: set_firstname_lastname_cohort_and_type
+    description: set firstname, lastname, cohort, and type
+    depends_on:
+      - key_exists
+    evaluate: "all"
+    rules:
+      - match:
+          - key: subject.firstname
+            is: Null
+        action:
+          - key: subject.firstname
+            set: not-collected
+      - match:
+          - key: subject.lastname
+            is: Null
+        action:
+          - key: subject.lastname
+            set: not-collected
+      - match:
+          - key: subject.cohort
+            is: Null
+        action:
+          - key: subject.cohort
+            set: Study
+      - match:
+          - key: subject.type
+            is: Null
+        action:
+          - key: subject.type
+            set: human
+
+  - name: is_UDS_form
+    evaluate: "all"
+    description: Check if it is UDS form
+    variables:
+      idkey: file.info.forms.json.module
+    depends_on:
+      - key_exists
+    rules:
+      - match_type: "all"
+        match:
+          - key: $idkey
+            startswith: "UDS"
+            case-sensitive: false
+
+  - name: set_sex_from_UDS
+    evaluate: "all"
+    description: Set subject.sex based on UDS properties
+    depends_on:
+      - is_UDS_form
+    rules:
+      - match_type: "all"
+        match:
+          - key: file.info.forms.json.sex
+            is: 1
+        action:
+          - key: subject.sex
+            set: male
+      - match_type: "all"
+        match:
+          - key: file.info.forms.json.sex
+            is: 2
+        action:
+          - key: subject.sex
+            set: female
+
+  - name: set_race_from_UDS
+    evaluate: "all"
+    description: Set subject.race based on UDS properties
+    depends_on:
+      - is_UDS_form
+    rules:
+      - match_type: "all"
+        match:
+          - key: file.info.forms.json.race
+            is: 1
+        action:
+          - key: subject.race
+            set: White
+      - match_type: "all"
+        match:
+          - key: file.info.forms.json.race
+            is: 2
+        action:
+          - key: subject.race
+            set: Black or African American
+      - match_type: "all"
+        match:
+          - key: file.info.forms.json.race
+            is: 3
+        action:
+          - key: subject.race
+            set: American Indian or Alaska Native
+      - match_type: "all"
+        match:
+          - key: file.info.forms.json.race
+            is: 4
+        action:
+          - key: subject.race
+            set: Native Hawaiian or Other Pacific Islander
+      - match_type: "all"
+        match:
+          - key: file.info.forms.json.race
+            is: 5
+        action:
+          - key: subject.race
+            set: Asian
+      - match_type: "all"
+        match:
+          - key: file.info.forms.json.race
+            is: 50
+        action:
+          - key: subject.race
+            set: Unknown or Not Reported
+      - match_type: "all"
+        match:
+          - key: file.info.forms.json.race
+            is: 55
+        action:
+          - key: subject.race
+            set: Unknown or Not Reported
+
+  - name: set_ethnicity_from_UDS
+    evaluate: "all"
+    description: Set ethnicity based on UDS properties
+    depends_on:
+      - is_UDS_form
+    rules:
+      - match_type: "all"
+        match:
+          - key: file.info.forms.json.ethnicity
+            is: 0
+        action:
+          - key: subject.ethnicity
+            set: Not Hispanic or Latino
+      - match_type: "all"
+        match:
+          - key: file.info.forms.json.ethnicity
+            is: 1
+        action:
+          - key: subject.ethnicity
+            set: Hispanic or Latino
+      - match_type: "all"
+        match:
+          - key: file.info.forms.json.ethnicity
+            is: 9
+        action:
+          - key: subject.ethnicity
+            set: Unknown or Not Reported
+
   - name: set_form_type
     evaluate: "first"
     description: set form type
     variables:
       idkey: file.info.forms.json.module
       fc: file.classification
-
     depends_on:
       - key_exists
     rules:
