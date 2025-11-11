@@ -24,7 +24,6 @@ RUN pip install --no-cache-dir -r $FLYWHEEL/requirements.txt
 
 # Installing the current project (most likely to change, above layer can be cached)
 COPY ./ $FLYWHEEL/
-RUN ls $FLYWHEEL/
 RUN pip install --no-cache-dir .
 
 # Copying profiles
