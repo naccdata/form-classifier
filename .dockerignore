@@ -5,7 +5,7 @@
 !pyproject.toml
 !run.py
 !manifest.json
-!fw_gear_file_classifier
+!nacc_gear_form_classifier
 !README.md
 !requirements.txt
 

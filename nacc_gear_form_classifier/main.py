@@ -33,9 +33,9 @@ def classify(
     if not result:
         log.warning("Unsuccessful classification")
     log.info("Adding gear qc info.")
-    # Add qc result "classification"
+    # Add qc result "validation"
     context.metadata.add_qc_result(
-        file_input, "classification", "PASS" if result else "FAIL"
+        file_input, "validation", "PASS" if result else "FAIL"
     )
 
     return int(not result)

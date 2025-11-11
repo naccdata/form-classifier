@@ -5,7 +5,7 @@ from unittest.mock import MagicMock
 import pytest
 import yaml
 
-from fw_gear_file_classifier.utils import (
+from nacc_gear_form_classifier.utils import (
     compare_dict,
     get_schema_definition,
     is_modality_defined,
