@@ -1,4 +1,4 @@
-FROM alpine/git:v2.36.1 as profiles
+FROM alpine/git:v2.36.1 AS profiles
 
 ENV PROFILE_VERSION=0.3.2
 
@@ -27,7 +27,7 @@ COPY ./ $FLYWHEEL/
 RUN pip install --no-cache-dir .
 
 # Copying profiles
-COPY --from=profiles /root/profiles/profiles ./fw_gear_file_classifier/classification_profiles
+COPY --from=profiles /root/profiles/profiles ./nacc_gear_form_classifier/classification_profiles
 
 # Configure entrypoint
 RUN chmod a+x $FLYWHEEL/run.py

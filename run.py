@@ -5,9 +5,9 @@ import typing as t
 
 from flywheel_gear_toolkit import GearToolkitContext
 
-from fw_gear_file_classifier.main import classify
-from fw_gear_file_classifier.parser import parse_config
-from fw_gear_file_classifier.utils import (
+from nacc_gear_form_classifier.main import classify
+from nacc_gear_form_classifier.parser import parse_config
+from nacc_gear_form_classifier.utils import (
     clear_file_classification,
     validate_modality_schema,
 )

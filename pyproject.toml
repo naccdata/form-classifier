@@ -1,6 +1,6 @@
 [tool.poetry]
-name = "fw-gear-file-classifier"
-version = "0.6.1"
+name = "nacc-gear-form-classifier"
+version = "0.1.1"
 description = "Generic File Classifier"
 authors = ["Flywheel <support@flywheel.io>"]
 readme = "README.md"

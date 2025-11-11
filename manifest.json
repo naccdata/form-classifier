@@ -31,7 +31,7 @@
     },
     "gear-builder": {
       "category": "classifier",
-      "image": "flywheel/file-classifier:0.6.1"
+      "image": "flywheel/form-classifier-nacc:0.1.1"
     }
   },
   "description": "Generic file classifier. This gear update the classification of a file based on the metadata attached to it, and therefore should only run AFTER gears which populate metadata on the file, such as file-metadata-curator. The gear takes as input a file, and an optional classification profile. The gear tags the input file upon completion.",
@@ -85,8 +85,8 @@
   "label": "Form Classifier - NACC",
   "license": "MIT",
   "maintainer": "Flywheel <support@flywheel.io>",
-  "name": "file-classifier",
+  "name": "form-classifier-nacc",
   "source": "https://gitlab.com/flywheel-io/scientific-solutions/gears/file-classifier.git",
   "url": "https://gitlab.com/flywheel-io/scientific-solutions/gears/file-classifier.git",
-  "version": "0.6.1"
+  "version": "0.1.1"
 }

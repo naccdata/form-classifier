@@ -1,5 +1,9 @@
 # Release notes
 
+## NACC - 0.1.1
+
+* Changes QC output location from `classification` to `validation`
+
 ## 0.6.1
 
 __Maintenance__:
